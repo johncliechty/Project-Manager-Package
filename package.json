@@ -1,0 +1,23 @@
+{
+  "name": "@ghost-world-labs/project-manager-kit",
+  "version": "0.1.0",
+  "description": "Tool-agnostic AI project-manager skill and CLI. Works with Claude Code, Gemini CLI, Codex, Cowork, Cursor, OpenClaw, and bare humans.",
+  "license": "MIT",
+  "type": "module",
+  "bin": {
+    "pm": "./bin/pm.mjs"
+  },
+  "scripts": {
+    "init": "node ./bin/pm.mjs init",
+    "status": "node ./bin/pm.mjs status",
+    "what-now": "node ./bin/pm.mjs what-now",
+    "log": "node ./bin/pm.mjs log",
+    "brief": "node ./bin/pm.mjs brief",
+    "package-skill": "node ./bin/package-skill.mjs"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {},
+  "devDependencies": {}
+}

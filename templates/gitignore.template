@@ -1,0 +1,35 @@
+# Common
+.DS_Store
+Thumbs.db
+*.log
+.env
+.env.local
+.env.*.local
+
+# Node
+node_modules/
+dist/
+build/
+.next/
+out/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+.pytest_cache/
+
+# Editors
+.vscode/
+.idea/
+*.swp
+
+# Project-manager working files (keep templates, ignore generated)
+.pm/cache/
+briefs/archive/.tmp/
+
+# Backups
+*.bak
+*.backup
