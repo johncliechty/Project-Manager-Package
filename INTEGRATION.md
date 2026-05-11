@@ -15,9 +15,9 @@ It propagates into three places:
 ```
 C:\dev\Agentic-Home\project-manager-kit\          ← canonical (this repo)
         │
-        ├── (copy) PSU master skill repo:
-        │     C:\Users\jcl12\OneDrive - The Pennsylvania State University\
-        │       Research\AI Skill Repo\Agent Review\skills\project-manager\
+        ├── (copy) Local master skill repo:
+        │     C:\dev\Agentic-Home\skills-master\project-manager\
+        │     (was the PSU OneDrive; migrated to local 2026-05-07 evening)
         │
         ├── (copy) OpenClaw runtime skills:
         │     ~/.openclaw/skills/project-manager/   (real files — junctions rejected)
