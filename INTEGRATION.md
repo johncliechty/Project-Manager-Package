@@ -33,11 +33,13 @@ The `Bootstrap-Agentic-Home.ps1` script at the workspace root is the propagator.
 - `.claude/skills/` and `.gemini/skills/` get **junctions** to the master.
 - Master files have any UTF-8 BOM stripped before propagation (OpenClaw's frontmatter parser doesn't tolerate `EF BB BF` at byte 0).
 
-To add `project-manager` to that propagation, the bootstrap needs one new step. See "Bootstrap step" below.
+**Status: complete as of 2026-05-11.** `Bootstrap-Agentic-Home.ps1` lines 98–129 contain the `project-manager-kit` → `skills-master/project-manager/` sync block (with the BOM strip and a OneDrive-cloud-only defensive try/catch). The existing `Get-ChildItem $masterRepo -Directory | Where-Object { ... SKILL.md ... }` discovery loop (line 134) auto-picks up the synced folder for the junction step (line 168) and the OpenClaw real-file-copy step (line 181), so no special-casing is needed beyond the kit→master sync.
 
-## Bootstrap step (for `Bootstrap-Agentic-Home.ps1`)
+For ad-hoc propagation outside the bootstrap (e.g., after editing the kit and you don't want a full bootstrap run), use `scripts\propagate-project-manager-skill.ps1`.
 
-Add this block after the existing skill propagation logic:
+## Bootstrap step (historical recipe — already implemented)
+
+The block below is the recipe that landed in `Bootstrap-Agentic-Home.ps1`. Kept for reference; do **not** re-add it.
 
 ```powershell
 # project-manager skill propagation (added 2026-05-07)
