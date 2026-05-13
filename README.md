@@ -1,140 +1,145 @@
-# project-manager-kit
+# Project-Manager-Package
 
-A tool-agnostic AI project-manager skill and CLI. Works with Claude Code, Cursor, Codex, Gemini CLI, Cowork, OpenClaw, or no AI at all.
+A Cowork / Claude Code plugin marketplace that ships two things:
 
-The kit answers four questions for any software project:
+1. **`/project-manager`** — a tool-agnostic AI project-management skill (set up, organize, and run software projects from intent to shipped artifact).
+2. **`/anchor-coach`** — the **Anchor curriculum**, an interactive first-project course that teaches an absolute beginner to build, test, and ship a working web app by directing an AI agent through eight milestones.
 
-1. **How do I start this?** (interactive bootstrap or absorb an existing folder)
-2. **Where am I?** (`pm status`)
-3. **What should I do next?** (`pm what-now` — top 3, ranked, with justifications)
-4. **Can a non-technical reader understand the project?** (`pm brief` — daily-refreshed investor-readable summary)
+The two are designed to work together: the Anchor curriculum quietly uses `/project-manager` under the hood, and the final lesson reveals this and hands `/project-manager` to the student to use directly on a project of their own choosing.
 
-The kit is opinionated about *one thing*: the operating loop. It enforces **research → proto-plan → critique (bounded to 2 passes) → decompose → build → log → review**, derived from John Liechty's *AI-Assisted Project Workflow*. The bounded-iteration rule is the discipline; the rest of the kit is plumbing.
+---
 
-**Repo:** [github.com/johncliechty/Project-Manager-Package](https://github.com/johncliechty/Project-Manager-Package)
+## Getting started — for students
 
-## Quickstart
+Three steps. About 5 minutes from zero to your first lesson.
+
+### 1. Install Cowork
+
+Go to [claude.com/cowork](https://claude.com/cowork), download for your OS, and sign in with your Anthropic account.
+
+*An Anthropic subscription is required. Free-tier limits may apply; check the current Cowork docs.*
+
+### 2. Add this marketplace and install the curriculum
+
+Open Cowork. Paste these three commands into the chat, one at a time, and press Enter after each. Wait for the confirmation between each one.
+
+```
+/plugin marketplace add johncliechty/Project-Manager-Package
+```
+
+```
+/plugin install project-manager@project-manager-package
+```
+
+```
+/plugin install anchor-coach@project-manager-package
+```
+
+### 3. Start your project
+
+Make an empty folder anywhere on your computer (right-click your Desktop → New Folder → name it `anchor` or whatever you want). In Cowork, click **Open Folder** and pick that folder. Then type:
+
+```
+Let's start the Anchor curriculum.
+```
+
+Press Enter. The Anchor coach takes it from there. The first lesson is about 10 minutes. The whole curriculum is about 2 hours of session time, spread across whatever calendar feels right. You'll finish with a working web app shipped to your own public GitHub, a retrospective about your work, and a second project already bootstrapped.
+
+---
+
+## What you'll build
+
+Anchor is a single-file local task tracker:
+
+- One `index.html`, vanilla JavaScript, `localStorage` for persistence — no toolchain, no server, no install.
+- Six features: add a task, mark complete, delete, group tasks under projects, persist across page reloads, polish (system font, comfortable whitespace, accent color, anchor SVG).
+- Tests written by the agent that prove every feature works.
+- Public GitHub repo with a README and screenshot at the end.
+
+The course teaches *the loop you'll use for the next twenty years of building things with an AI agent.* Anchor is the seed; the loop is the plant.
+
+---
+
+## The 8-milestone spine
+
+| # | Milestone | What you produce | Time |
+|---|---|---|---|
+| M0 | Setup | Cowork running, GitHub auth, project folder | ~10 min |
+| M1 | Brainstorm | `brief.md` — who it's for, scenarios, NOT-list | ~10 min |
+| M2 | Describe | `picture.md` — mockup, 5 data nouns, 4 interactions | ~15 min |
+| M3 | Scaffold | `index.html` empty shell — agent shows 3 mockups, you pick | ~30–40 min |
+| M4 | Build | Working `index.html` with all 6 features + tests | ~10 min |
+| M5 | Test | Use it for real; find 2–3 things; fix them | ~10 min |
+| M6 | Ship | Public GitHub repo + README + screenshot + text the link | ~10 min |
+| M7 | Launch | Retrospective + meta-reveal + your next project bootstrapped | ~25 min |
+
+Total: ~2 hours of session time. The course assumes you spread it across whatever calendar feels right.
+
+---
+
+## For instructors and developers
+
+The curriculum is designed to be remixed for other first-project shapes (Business Statistics tool, data pipeline, content tool, etc.). The seven principles, the milestone spine, the rubric shape, the git contract, and the coach contract are reusable; what changes per course is the feature checklist and the technical scope. See [`courses/anchor-coach/lessons/`](./plugins/anchor-coach/skills/anchor-coach/lessons/) for the lesson format reference and [`PLAN.md`](https://github.com/johncliechty/Project-Manager-Package/blob/main/PLAN.md) (in the Teaching repo) for the design rationale.
+
+### Repo structure
+
+```
+Project-Manager-Package/
+├── .claude-plugin/
+│   └── marketplace.json              ← plugin marketplace catalog
+├── plugins/
+│   ├── project-manager/              ← the /project-manager plugin
+│   │   ├── .claude-plugin/plugin.json
+│   │   └── skills/project-manager/
+│   │       ├── SKILL.md
+│   │       └── references/
+│   └── anchor-coach/                 ← the /anchor-coach plugin
+│       ├── .claude-plugin/plugin.json
+│       └── skills/anchor-coach/
+│           ├── SKILL.md
+│           ├── lessons/              ← L1–L7
+│           └── references/
+│               ├── STYLE.md
+│               ├── group-mode.md
+│               ├── skills-and-prompts.md
+│               └── milestones/      ← M0–M7 rubrics
+├── bin/                              ← legacy CLI (pm init, pm status, etc.)
+├── references/                       ← legacy kit references
+├── templates/                        ← project templates
+├── SKILL.md                          ← legacy top-level skill (CLI users)
+└── README.md                         ← this file
+```
+
+The legacy CLI (`pm init`, `pm status`, `pm what-now`, `pm brief`) at the root is preserved for direct command-line use; it predates the plugin shape and stays available to existing collaborators. New users should install via the plugin marketplace path above.
+
+---
+
+## The standalone CLI (legacy path)
+
+For users who want to use `/project-manager` outside the Cowork plugin system — Claude Code, Cursor, Codex, Gemini CLI, OpenClaw, or no AI at all:
 
 ```bash
-git clone https://github.com/johncliechty/Project-Manager-Package.git project-manager-kit
-cd project-manager-kit
-npm link                     # makes `pm` available globally (optional)
+git clone https://github.com/johncliechty/Project-Manager-Package.git
+cd Project-Manager-Package
+npm link                  # makes `pm` available globally (optional)
 
 # In a folder where you want to start a project:
 mkdir my-project && cd my-project
-pm init                      # interactive bootstrap
-
-# Daily flow:
-pm status                    # what's the state
-pm what-now                  # what should I do next
-pm log "<entry>"             # cheap append
-pm brief                     # refresh investor-readable summary
-
-# When ready:
-pm github-init               # create a private GitHub repo and push
-pm backup b2                 # generate Backblaze B2 rclone config + snapshot script
-pm brief --schedule          # register the daily 7 AM brief refresh (Cowork)
-pm windows-task install      # also install a Task Scheduler entry (Windows)
+pm init                   # interactive bootstrap
 ```
 
-If you don't want to `npm link`, you can run any subcommand directly:
+The kit enforces a **bounded operating loop**: research → proto-plan → critique (max 2 passes) → decompose → build → log → review. The bounded-iteration rule is the discipline; the rest of the kit is plumbing.
 
-```bash
-node /path/to/project-manager-kit/bin/pm.mjs init
-```
+Full CLI documentation is in [`SKILL.md`](./SKILL.md) and [`INTEGRATION.md`](./INTEGRATION.md).
 
-## What the kit gives you
-
-A consistent project shape that any agent (or any human) can pick up cold:
-
-```
-<your-project>/
-├── PROJECT.md              # the problem and the goal (rarely edited)
-├── MASTER-PLAN.md          # current plan with section statuses (frequently edited)
-├── plans/                  # archived proto-plans, critique transcripts, subplans
-├── briefs/                 # investor-readable summary — current + dated archive
-├── logs/                   # sessions/, decisions/, critique/
-├── code/                   # the actual product
-├── data/                   # project data (backed up if configured)
-├── skills/                 # project-specific skills (self-contained for collaborators)
-├── tools/                  # project-specific helper scripts
-├── AGENTS.md               # cross-tool orientation (lingua franca)
-├── CLAUDE.md, GEMINI.md    # tool-specific orientation layered on AGENTS.md
-├── .pm/                    # state.json, critique-passes.json, routing.yaml
-└── .git/
-```
-
-Every file in this layout has a job. The skill writes the layout so you don't have to think about it; you just write the *content*.
-
-## The operating loop
-
-This is the spine. Every project goes through:
-
-1. **Research and proto-plan.** Enough prior research to understand the topic. Define goals. Sketch a proto-plan. Rough is fine.
-2. **Stress-test with critique.** Ask the agent to *attack* the plan, not validate it. Vary the *prompt angle* (security perspective, frustrated user, operator on call) more than the *model*.
-3. **Iterate, but bounded.** Revise. One more pass. **Stop after two passes**, even if the plan still feels imperfect. The skill enforces this — pass 3 is refused with an explanation.
-4. **Decompose into subplans.** Each subpart runs the same loop.
-5. **Build, treating the plan as provisional.** Update the plan as you build; don't treat it as a form to be filled in.
-6. **Test each part.** Then test the seams between parts — most failures live there.
-
-Why bounded iteration? Because AI will happily generate plausible-sounding new blindspots forever. That's a planning trap. A polished plan is not the goal; a working project is.
-
-The full discipline is in [`references/operating-loop.md`](references/operating-loop.md).
-
-## What the kit explicitly does *not* do
-
-- **Doesn't create accounts on your behalf** (GitHub, Backblaze, Cloudflare). You do that.
-- **Doesn't ask for credentials in chat.** Credentials go in `.env` (gitignored) or the provider's config file.
-- **Doesn't push to a remote without your invocation.** `pm github-init` runs once; after that, `git push` is on you.
-- **Doesn't pick *for* you.** `pm what-now` returns three options with justifications; you choose.
-- **Doesn't enforce a third critique pass.** Two is two.
-
-## Backup paths
-
-The kit ships configs for three. Pick one or more per project; `pm init` asks during bootstrap.
-
-| Path | What it protects | Cost | Best when |
-|---|---|---|---|
-| Local git + GitHub | Code, history, collaboration | Free for individuals | Always — this is the default |
-| Backblaze B2 | `data/` and large artifacts | ~$6/TB-month, $0.01/GB egress | Cheapest at scale; mostly write-once |
-| Cloudflare R2 | `data/` and large artifacts | ~$15/TB-month, **zero egress** | Pulling data out frequently |
-
-Full tradeoffs and the OneDrive caveat are in [`references/backup-options.md`](references/backup-options.md).
-
-## Daily investor brief
-
-`pm brief` regenerates `briefs/investor-brief-current.md` from current project state — `PROJECT.md`, `MASTER-PLAN.md`, last 7 days of session logs, last 14 days of decisions. The script is *deterministic* (no LLM calls); its job is to keep the *facts* current. Polish-passes for voice are best done by an agent or by you, after.
-
-To run it daily:
-
-- **Cowork** (default): `pm brief --schedule` registers a 7 AM Cowork scheduled task.
-- **Windows unattended**: `pm windows-task install` registers a Task Scheduler entry.
-- **Mac/Linux unattended**: `pm brief --schedule --cron` prints the crontab line.
-
-## Operating with an AI agent
-
-The kit's `SKILL.md` is the front of the agent's view. Drop the kit into:
-
-- **Claude Code**: junction or copy `project-manager-kit/` into `.claude/skills/project-manager/` at your project root, or a global skills folder.
-- **Cursor**: same — Cursor reads from `.claude/skills/` if it's there.
-- **Codex**: install the kit globally, point Codex at `bin/pm.mjs` for tool calls.
-- **Gemini CLI**: junction into `.gemini/skills/project-manager/`.
-- **Cowork**: drop the `.skill` zip (built via `npm run package-skill`) into your skills folder.
-- **OpenClaw**: copy as real files into `~/.openclaw/skills/project-manager/` (junctions are rejected — see `INTEGRATION.md`).
-- **No AI**: just use the `pm` CLI directly. The discipline doesn't require an agent; the agent makes the discipline cheaper to follow.
-
-## Sharing a project
-
-A project bootstrapped with this kit is portable: anyone who clones it can read `AGENTS.md` and be oriented in two minutes. The kit's per-project `skills/` mirror means a collaborator who doesn't have the global skill installed still has the project-specific skills the project actually uses.
-
-## Ghost World Labs integration
-
-If you're inside the GWL Agentic Sandbox at `C:\dev\Agentic-Home`, see `INTEGRATION.md` — it covers the symlink-escape rule, the `routing.json` registration, and the canonical PSU master skill repo location.
+---
 
 ## License
 
-MIT. See `LICENSE`.
+MIT for the code, CC BY 4.0 for the curriculum content. See [`LICENSE`](./LICENSE).
 
-## Contributing
+---
 
-This kit is opinionated. Pull requests that change the operating loop should be argued for in an issue first. Pull requests that fix bugs, add cross-platform support, or improve the templates are welcome.
+## Authorship
+
+Built by John Liechty. The curriculum was developed with Cowork (Claude) as a writing partner; the operating-loop discipline derives from John's *AI-Assisted Project Workflow*. Contributions welcome via pull request.

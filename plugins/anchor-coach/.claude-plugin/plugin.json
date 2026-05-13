@@ -1,0 +1,16 @@
+{
+  "name": "anchor-coach",
+  "version": "0.1.0",
+  "description": "The Anchor curriculum — an 8-milestone interactive first-project course. Teaches an absolute beginner to build, test, and ship a working web app by directing an AI agent. ~2 hours of session time. Auto-activates in any folder containing a .project-manager/ directory; before that, trigger phrases include 'start the Anchor curriculum', 'my first app', and 'I'm learning to code'.",
+  "author": {
+    "name": "John Liechty",
+    "email": "john.liechty@gmail.com"
+  },
+  "homepage": "https://github.com/johncliechty/Project-Manager-Package",
+  "repository": "https://github.com/johncliechty/Project-Manager-Package",
+  "license": "MIT",
+  "keywords": ["learning", "curriculum", "first-project", "beginner", "anchor"],
+  "dependencies": {
+    "skills": ["project-manager"]
+  }
+}

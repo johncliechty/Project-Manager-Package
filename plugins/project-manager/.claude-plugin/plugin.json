@@ -1,0 +1,13 @@
+{
+  "name": "project-manager",
+  "version": "0.1.0",
+  "description": "Set up, organize, and run software projects from intent to shipped artifact. Provides the /project-manager skill: .project-manager/ scaffolding, bounded operating loop, retrospectives, greenfield + brownfield bootstrap.",
+  "author": {
+    "name": "John Liechty",
+    "email": "john.liechty@gmail.com"
+  },
+  "homepage": "https://github.com/johncliechty/Project-Manager-Package",
+  "repository": "https://github.com/johncliechty/Project-Manager-Package",
+  "license": "MIT",
+  "keywords": ["project-management", "workflow", "scaffolding", "retrospective"]
+}
