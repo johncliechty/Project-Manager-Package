@@ -1,13 +1,13 @@
-# publish-plugin.ps1 — push the plugin marketplace + Anchor curriculum to GitHub.
+# publish-plugin.ps1 -- commit + push curriculum updates.
 #
-# Run this from PowerShell at the repo root:
+# Run from PowerShell at the repo root:
 #   cd C:\dev\Agentic-Home\project-manager-kit
 #   .\publish-plugin.ps1
 #
-# Why this script exists: the assistant prepped the plugin-marketplace files
-# from inside a sandbox that couldn't commit due to a stale .git/index.lock
-# (Windows file-permission quirk on the mount). This script clears the lock,
-# stages everything new, commits, and pushes.
+# Handles three common failure modes:
+#   - stale .git/index.lock from a prior interrupted operation
+#   - corrupt .git/index file ("bad signature 0x00000000")
+#   - multi-line commit messages getting parsed as pathspec by PowerShell
 
 $ErrorActionPreference = "Stop"
 
@@ -20,44 +20,45 @@ if (Test-Path ".git\index.lock") {
     Remove-Item -Force ".git\index.lock"
 }
 
-# 2. Show what's new.
+# 2. Detect and repair a corrupt index. If git status fails with
+#    "index file corrupt" or "bad signature", we delete the index
+#    and rebuild from HEAD.
+$statusOutput = git status 2>&1
+$statusString = $statusOutput -join "`n"
+if ($LASTEXITCODE -ne 0 -or $statusString -match "index file corrupt|bad signature") {
+    Write-Host "  index is corrupt -- rebuilding from HEAD" -ForegroundColor Yellow
+    if (Test-Path ".git\index") {
+        Remove-Item -Force ".git\index"
+    }
+    git reset HEAD --quiet
+    if ($LASTEXITCODE -ne 0) {
+        Write-Host "  reset failed -- falling back to read-tree" -ForegroundColor Yellow
+        git read-tree HEAD
+    }
+}
+
 Write-Host ""
 Write-Host "=== files to commit ===" -ForegroundColor Cyan
 git status --short
 
-# 3. Stage everything.
 Write-Host ""
 Write-Host "=== git add . ===" -ForegroundColor Cyan
 git add .
 
-# 4. Commit.
+# Check whether there's actually anything to commit before we try.
+$staged = git diff --cached --name-only
+if (-not $staged) {
+    Write-Host ""
+    Write-Host "Nothing to commit. Working tree may already be in sync with origin." -ForegroundColor Yellow
+    Write-Host ""
+    git log --oneline -3
+    exit 0
+}
+
 Write-Host ""
 Write-Host "=== git commit ===" -ForegroundColor Cyan
-$commitMsg = @"
-feat: add Cowork plugin marketplace + Anchor curriculum
+git commit -m "docs: simplify install flow - clone-and-read-SKILL instead of marketplace; add CLAUDE.md auto-load bootstrap"
 
-- .claude-plugin/marketplace.json catalogs two plugins
-- plugins/project-manager/ packages the /project-manager skill
-  for marketplace install (./.claude-plugin/plugin.json + skills/)
-- plugins/anchor-coach/ ships the full Anchor curriculum:
-    7 lessons (M1-M7), 8 milestone rubrics (M0-M7), STYLE.md,
-    skills-and-prompts.md, group-mode.md
-  Activates on **/.project-manager/** glob; trigger phrases include
-  "start the Anchor curriculum", "begin Anchor", "my first app".
-- README rewritten to lead with the 3-step student install:
-    /plugin marketplace add johncliechty/Project-Manager-Package
-    /plugin install project-manager@project-manager-package
-    /plugin install anchor-coach@project-manager-package
-- Legacy CLI (bin/, references/, templates/, SKILL.md at root)
-  preserved unchanged for non-plugin users.
-
-The curriculum was developed in C:\dev\Teaching\ across several
-sessions on 2026-05-12; this commit imports the locked content into
-the plugin shape and adds the marketplace machinery.
-"@
-git commit -m $commitMsg
-
-# 5. Push.
 Write-Host ""
 Write-Host "=== git push origin main ===" -ForegroundColor Cyan
 git push origin main
@@ -66,8 +67,11 @@ Write-Host ""
 Write-Host "=== done ===" -ForegroundColor Green
 Write-Host "Public URL: https://github.com/johncliechty/Project-Manager-Package"
 Write-Host ""
-Write-Host "Verify in Cowork by running these three commands:"
-Write-Host "  /plugin marketplace add johncliechty/Project-Manager-Package"
-Write-Host "  /plugin install project-manager@project-manager-package"
-Write-Host "  /plugin install anchor-coach@project-manager-package"
+Write-Host "To pilot: open an empty folder in Cowork and paste:"
+Write-Host ""
+Write-Host "  Please clone https://github.com/johncliechty/Project-Manager-Package"
+Write-Host "  into my home directory if it isn't already there, then read the file at"
+Write-Host "  Project-Manager-Package/plugins/anchor-coach/skills/anchor-coach/SKILL.md"
+Write-Host "  and start the Anchor curriculum with me here in this folder. Follow the"
+Write-Host "  SKILL md instructions for the rest of our session and every future one."
 Write-Host ""

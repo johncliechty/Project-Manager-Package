@@ -1,49 +1,43 @@
 # Project-Manager-Package
 
-A Cowork / Claude Code plugin marketplace that ships two things:
+A tool-agnostic AI-collaboration toolkit that ships two things:
 
-1. **`/project-manager`** — a tool-agnostic AI project-management skill (set up, organize, and run software projects from intent to shipped artifact).
-2. **`/anchor-coach`** — the **Anchor curriculum**, an interactive first-project course that teaches an absolute beginner to build, test, and ship a working web app by directing an AI agent through eight milestones.
+1. **Anchor Coach** — an interactive first-project course that teaches an absolute beginner to build, test, and ship a working web app by directing an AI agent through eight milestones (about 2 hours of session time, spread across whatever calendar feels right).
+2. **Project Manager** — the underlying skill that organizes and runs software projects from intent to shipped artifact. Anchor Coach uses it internally, then hands it directly to the student in the final lesson so they can apply the same loop to a project of their own choosing.
 
-The two are designed to work together: the Anchor curriculum quietly uses `/project-manager` under the hood, and the final lesson reveals this and hands `/project-manager` to the student to use directly on a project of their own choosing.
+Works with **Cowork**, **Claude Code**, and any agent that has bash and file-read access. No marketplace install required — just clone the repo and the agent reads the skill files directly.
 
 ---
 
 ## Getting started — for students
 
-Three steps. About 5 minutes from zero to your first lesson.
+Three steps. About 3 minutes from zero to your first lesson.
 
 ### 1. Install Cowork
 
-Go to [claude.com/cowork](https://claude.com/cowork), download for your OS, and sign in with your Anthropic account.
+Go to [claude.com/cowork](https://claude.com/cowork), download for your OS, and sign in with your Anthropic account. *(An Anthropic subscription is required.)*
 
-*An Anthropic subscription is required. Free-tier limits may apply; check the current Cowork docs.*
+### 2. Make an empty folder for your project
 
-### 2. Add this marketplace and install the curriculum
+Right-click your Desktop → New Folder → name it `anchor` (or whatever you want). Don't put anything in it.
 
-Open Cowork. Paste these three commands into the chat, one at a time, and press Enter after each. Wait for the confirmation between each one.
+### 3. Open the folder in Cowork and paste the bootstrap prompt
 
-```
-/plugin marketplace add johncliechty/Project-Manager-Package
-```
+Open Cowork. Click **Open Folder** and pick the folder you just made. In the chat, paste this exact prompt and press Enter:
 
 ```
-/plugin install project-manager@project-manager-package
+Please clone https://github.com/johncliechty/Project-Manager-Package
+into my home directory if it isn't already there, then read the file at
+Project-Manager-Package/plugins/anchor-coach/skills/anchor-coach/SKILL.md
+and start the Anchor curriculum with me here in this folder. Follow the
+SKILL.md's instructions for the rest of our session and every future one.
 ```
 
-```
-/plugin install anchor-coach@project-manager-package
-```
+Your Anchor coach takes it from there. It will clone the curriculum repo to your home folder, drop a small `CLAUDE.md` in your project folder so that every future Cowork session in this folder auto-loads the skill (no re-pasting needed), and start your first lesson — which is about 10 minutes.
 
-### 3. Start your project
+The whole curriculum is about 2 hours of session time, spread across whatever calendar feels right. You'll finish with a working web app shipped to your own public GitHub, a retrospective about your work, and a second project already bootstrapped.
 
-Make an empty folder anywhere on your computer (right-click your Desktop → New Folder → name it `anchor` or whatever you want). In Cowork, click **Open Folder** and pick that folder. Then type:
-
-```
-Let's start the Anchor curriculum.
-```
-
-Press Enter. The Anchor coach takes it from there. The first lesson is about 10 minutes. The whole curriculum is about 2 hours of session time, spread across whatever calendar feels right. You'll finish with a working web app shipped to your own public GitHub, a retrospective about your work, and a second project already bootstrapped.
+**Updates.** If the curriculum gets improved later, just type *"update the Anchor skill"* and the coach will `git pull` the repo. No re-install ceremony.
 
 ---
 

@@ -13,9 +13,11 @@ Cowork is running, GitHub's CLI is installed and authenticated, your project fol
 
 ## The boxes
 
-Read each box. For each, check the project state. Mark it ✓ or ✗. **All five must be ✓ to advance to M1.**
+Read each box. For each, check the project state. Mark it ✓ or ✗. **All six must be ✓ to advance to M1.**
 
 - [ ] **Cowork is running.** The student is in the chat with you. (Implicit pass — if you're reading this rubric, this box is green.)
+- [ ] **The curriculum repo is cloned somewhere on disk.** Typical location is `~/Project-Manager-Package/` (Windows: `C:\Users\<name>\Project-Manager-Package\`). Verify the SKILL.md is readable at `<clone>/plugins/anchor-coach/skills/anchor-coach/SKILL.md`. If the clone is missing, run `git clone https://github.com/johncliechty/Project-Manager-Package <chosen-path>` via bash and re-check.
+- [ ] **`CLAUDE.md` exists in the student's project folder** with an absolute pointer at the SKILL.md inside the local clone of `Project-Manager-Package`. This file is what makes future Cowork sessions in this folder auto-load the skill without the student having to re-prompt. If it doesn't exist yet, write it now (see `SKILL.md` § *First-turn-ever bootstrap* for the exact content and template). If the path inside it is wrong or stale (e.g. the student moved the clone), fix the path now.
 - [ ] **`gh --version` returns a version ≥ 2.0.** Run the check; if it fails, walk the student through `winget install GitHub.cli` (Windows) or `brew install gh` (Mac). Re-check until green. This is the only software install the course asks for; everything else is browser-and-Cowork.
 - [ ] **`gh auth status` shows the student authenticated to github.com.** If not, walk them through `gh auth login --web --git-protocol https --hostname github.com` — browser-based device-code flow, no PAT to copy, no SSH keys. Token lands in Windows Credential Manager or Mac Keychain automatically.
 - [ ] **A project folder exists and contains `.project-manager/`.** The folder is at whatever path the student chose (their Desktop, `~/projects/anchor`, anywhere). The `.project-manager/` directory was created by the skill's init step and contains at minimum `state.json` and `config.yaml`. If `.project-manager/` doesn't exist yet, run the init step now.
