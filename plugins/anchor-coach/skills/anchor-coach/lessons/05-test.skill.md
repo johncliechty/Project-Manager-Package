@@ -152,7 +152,7 @@ You should have, in your head:
 - A short, specific, sharp fix prompt you wrote yourself — visible at the bottom of `prompts.md` as evidence of how far your prompting has come since the M1 rambling.
 - The feeling that the next thing is *put this on GitHub so someone other than you can see it*, not *use it for another week*. (That's Lesson 6 — ten minutes, you'll see.)
 
-If you have all of that, ask the coach to advance you to M6.
+M5 is closed; the coach moves you straight to M6.
 
 ---
 

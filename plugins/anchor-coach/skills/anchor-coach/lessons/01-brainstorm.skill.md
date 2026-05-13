@@ -60,7 +60,7 @@ Here's what's new in 2026 and why this lesson takes ten minutes instead of an ho
 
 ## Worked Examples
 
-You'll see one example by default — the reading-log brief, fully worked. If you want to see more — a workout tracker, a fully-faded version, or a review-in-motion — just ask the coach.
+You'll see one example by default — a *different student* named Anna writing the brief for *her* tool, a reading-log. **The worked examples throughout this curriculum follow Anna's reading-log project rather than your Anchor — that's deliberate.** Seeing a different concrete project run through the same workflow makes the workflow itself easier to internalize: you mentally translate from Anna's reading-log to your Anchor and back, and the *shape of the pattern* becomes the load-bearing thing rather than any one project's specifics. If you want to see other variants — a workout tracker, a fully-faded version, or a review-in-motion — just ask the coach.
 
 ### Worked Example 1 — A reading log brief (the brief, fully worked)
 
@@ -80,7 +80,7 @@ You'll see one example by default — the reading-log brief, fully worked. If yo
 
 Notice three things. Every sentence is about the human and what they experience. Zero implementation nouns. Each NOT line has a *because* — and the *because* is honest (not *"I don't know how to build that yet"*).
 
-**How this brief got written.** The student didn't write this from scratch. They sat at the chat and rambled for thirty seconds: *"I want a thing for tracking what I read, because I always forget by January. I want it to remember the title and let me say one sentence about each book. I don't want it to be Goodreads — no ratings, no social stuff, no tags."* The coach summarized that back in one sentence to confirm, then offered a prompt template. The student approved the template (with one small edit), the agent drafted the brief, the student read it, asked for two small revisions, and it was done. About eight minutes. *That* is what's new.
+**How this brief got written.** The student didn't write this from scratch. They sat at the chat and rambled for thirty seconds: *"I want a thing for tracking what I read, because I always forget by January. I want it to remember the title and let me say one sentence about each book. I don't want it to be Goodreads — no ratings, no social stuff, no tags."* The coach summarized that back in one sentence to confirm, then *drafted the brief directly* — about fifteen seconds — and saved it to `.project-manager/brief.md`. The coach then showed the student the prompt it had just used, naming the three parts (Context, Skills, Task), so the student could see the shape of a good prompt as a worked example. The student read the brief, asked for two small revisions, and it was done. About eight minutes. *That* is what's new — not just the speed, but the fact that the student saw the bridge between her thinking and the deliverable in the form of the prompt itself.
 
 ### Sidebars (offered on request)
 
@@ -114,25 +114,23 @@ You ramble. Dictation is ideal here. Three to five sentences is plenty. *"I keep
 
 The coach reflects it back in one sentence to confirm. *"OK — Anchor is a personal task tracker for you (a grad student) that survives a closed tab and groups tasks by project, deliberately without due dates, social features, notifications, or dark mode. Sound right?"* You confirm or correct.
 
-### Step 2 — Coach offers a prompt template
+### Step 2 — Coach drafts the brief; you witness the prompt
 
-Coach: *"Based on what you just told me, here's the prompt I'd write to draft your brief. Use as-is, or tweak it."*
+The coach takes the v0 vision you just rambled and *just produces* the brief — about fifteen seconds. Saved to `.project-manager/brief.md`. The coach opens the file and shows it to you.
 
-The coach shows you a prompt that looks something like this — annotated with the three parts so you can see the shape:
+Then — and this is the small teaching beat that makes L1 work — the coach shows you the prompt it just used, with one sentence:
 
-> *— Context: (none — first lesson, no project files exist yet) —*
-> *— Skills: (none — plain prompting today; we attach skills starting in Lesson 3) —*
-> *— Task: Draft a one-page brief for a personal task tracker called Anchor. The brief should have four sections: (1) a one-paragraph "who is this for" naming a real human; (2) three concrete scenarios in the form "When I X, I want Y to happen, because Z" — at least one about adding a task, one about finishing a task, one about a project (the grouping); (3) a "this is NOT" section with three features deliberately cut from v0, each with a one-sentence "because"; (4) zero implementation nouns (no JSON, no function, no database, no API — describe the user experience, not the wiring). Voice: plain English, like describing the tool to a friend over coffee. Use what I just told you about myself: [the coach inserts your summary from Step 1 here]. Output as markdown. Save to `.project-manager/brief.md`.*
+> *"FYI, here's the prompt I just sent the agent to produce that brief. The three parts at the top of every good prompt are **Context** (which files the agent should read first), **Skills** (which `/skill-name` packages to attach — none today; we start attaching skills in Lesson 3), and **Task** (the actual ask, crisp). You can ask me to write prompts like this for you any time."*
 
-You read the prompt. You edit anything that doesn't sound like you, or you approve it as written. The coach doesn't move until *you* say go.
+The prompt itself looks something like this, for the grad-student-task-tracker case:
 
-### Step 3 — Send the prompt; agent drafts `brief.md`
+> *Context: (none — first lesson, no project files exist yet). Skills: (none — plain prompting today). Task: Draft a one-page brief for a personal task tracker called Anchor. Four sections: (1) a one-paragraph "who is this for" naming a real human; (2) three concrete scenarios in the form "When I X, I want Y to happen, because Z" — at least one about adding a task, one about finishing a task, one about a project; (3) a "this is NOT" section with three features deliberately cut from v0, each with a one-sentence "because"; (4) zero implementation nouns — describe the user experience, not the wiring. Voice: plain English, like describing the tool to a friend over coffee. Save to `.project-manager/brief.md`.*
 
-The coach sends the prompt and the agent drafts the brief. About fifteen seconds. Saved to `.project-manager/brief.md`. The coach also appends the exact text of the prompt you sent — verbatim — to `.project-manager/prompts.md`, with a date and an `M1` tag. (`prompts.md` is append-mode; new entries land at the bottom; you'll see it grow over the seven lessons.)
+You see the prompt. You don't approve it; you witness it as a worked example of the craft. The prompt is captured verbatim into `.project-manager/prompts.md` with a date and `M1` tag — `prompts.md` is append-mode; new entries land at the bottom; you'll see it grow over the seven lessons.
 
-The coach opens both files and shows you the brief.
+The reveal: the agent did the prompt-writing for you. *You* did the thinking — what Anchor is, who it's for, what it does and deliberately doesn't do. The prompt is the bridge between your thinking and the deliverable. Over the next six lessons you'll write more and more of that bridge yourself; by L7 you'll be writing prompts unaided for your next project.
 
-### Step 4 — Read + iterate
+### Step 3 — Read + iterate
 
 Coach: *"Take a look. What sounds right, what doesn't?"*
 
@@ -140,17 +138,15 @@ You read. You give two or three specific revisions. *"The 'who it's for' is fine
 
 Two rounds is normal. Three is fine. If you're past four, you're polishing — the brief is good enough; ship it.
 
-### Step 5 — Closing sweep
+### Step 4 — Closing sweep
 
 Coach walks the M1 rubric out loud, brisk: *"file exists ✓ ... who-it's-for paragraph ✓ ... three scenarios with becauses ✓ ... NOT list with three items, each has a because ✓ ... zero implementation nouns ✓ ... review-received — that's now ... commit — that's next."* About a minute.
 
 For any red box, the coach proposes one specific edit. *"Box 5 — the second scenario still has the word 'database' in it. Strike it; rewrite as 'when I close my laptop and open it again, my tasks are still there.'"* You greenlight, the agent updates, the box turns green. Engagement, not agreement — if you disagree, say so in one sentence and we keep moving.
 
-### Step 6 — First git commit
+### Step 5 — First git commit
 
-Coach: *"Ready to commit M1?"*
-
-You say yes. On the default-on auto-commit path the coach runs:
+The coach runs the commit itself — bookkeeping the project manager handles, not a beat that needs your attention. *"Committing M1."* Behind the scenes:
 
 ```
 git init   # only the first time
@@ -158,9 +154,7 @@ git add .
 git commit -m "M1: brief written"
 ```
 
-If you'd rather type it yourself, the coach hands you the commands and watches you run them.
-
-You're done. Brief on disk, prompt logged, first commit made. About ten minutes from the rambling start.
+The coach reports the commit hash and confirms the brief and prompts.md are now in version control. *"Brief on disk, prompt logged, first commit made. Done — about ten minutes from the rambling start. Starting M2."*
 
 ### Sidebar — Want to swap with a friend?
 
@@ -188,7 +182,7 @@ You should have, in your head:
 - The experience of *describing what you wanted out loud, watching the agent draft it cleanly, and iterating in plain English*. Plain prompting on a frontier model is already a superpower. You just used it.
 - The feeling that the next thing to do is *describe what it looks like*, not *write code*. (That's Lesson 2.)
 
-If you have all of that, ask the coach to advance you to M2.
+M1 is closed; the coach moves you straight to M2.
 
 ---
 

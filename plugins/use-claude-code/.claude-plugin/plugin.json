@@ -1,0 +1,13 @@
+{
+  "name": "use-claude-code",
+  "version": "0.1.0",
+  "description": "Delegate host-side tasks to Claude Code when operating in a sandboxed agent runtime. Provides the /use-claude-code skill: a paste-once handshake that lets a Cowork (or other sandboxed) agent run host commands via Claude Code on the user's actual machine.",
+  "author": {
+    "name": "John Liechty",
+    "email": "john.liechty@gmail.com"
+  },
+  "homepage": "https://github.com/johncliechty/Project-Manager-Package",
+  "repository": "https://github.com/johncliechty/Project-Manager-Package",
+  "license": "MIT",
+  "keywords": ["claude-code", "host", "delegation", "sandbox", "bridge", "powershell"]
+}

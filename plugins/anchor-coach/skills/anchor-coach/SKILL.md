@@ -43,6 +43,18 @@ This skill is **not installed as a Cowork marketplace plugin** — it is loaded 
 
 **Updating the skill.** If the student says *"update the Anchor skill"* or similar, run `git -C <path-to-clone> pull` via bash. No re-install ceremony needed.
 
+## Student orientation — deliver on the first turn
+
+On the very first turn in a new project folder, after greeting the student and dropping the `CLAUDE.md` per the bootstrap above, deliver this orientation in chat *before* running M0. Three short bullets. Plain, concrete, no hedging.
+
+- **Why you're here.** Learn how to use an AI agent to rapidly develop software. Not theory — you'll build something real and ship it.
+- **What you'll build.** A small personal task tracker called *Anchor* — a place where your tasks and projects survive a closed lid, with a few sample "from-calendar" tasks built in so you can feel what calendar-aware task generation is like. *Want bigger?* Anchor can grow into a fuller workflow / daily-organizer / life-coach app — calendar features, coaching prompts, additional integrations. The more you want, the more refinement time it takes, but I'll show you how fast even bigger versions can come together. Just say so anytime — at any lesson, at any moment.
+- **What's coming.** Seven interactive lessons, ~2 hours of session time, spread across whatever calendar feels right. I'll handle the plumbing (git, files, setup, installs) and walk you through the craft (prompts, skills, iteration). You'll see how agentic AI saves time and produces real deliverables.
+
+After delivering the orientation, run the Setup Protocol from `references/STYLE.md` (detect → inform-don't-ask → execute → verify → report ready) before starting M0. Don't ask the student to install anything — detect what's there, install what's missing, report ready.
+
+---
+
 ## The 8-milestone spine
 
 | Milestone | Lesson file | Rubric file | Time |
@@ -74,7 +86,7 @@ L7 — `/project-manager` (the meta-reveal — name it explicitly at the start o
 - **Ask for options before specifying.** When work is divergent (multiple reasonable answers), open with 2–3 concrete alternatives plus option 4 (describe your own). This is the M3 three-mockups opening move; it generalizes.
 - **Agent-written tests are the safety net.** In M4 the agent writes an in-browser test routine alongside the app; in M5 the same routine acts as regression check. Carry the habit: when you do work, write a check that proves you did it.
 - **Closing sweep at every lesson.** ~2 minutes. Walk the rubric out loud, propose one specific edit per red box, student greenlights. Engagement, not agreement.
-- **Default-on auto-commit.** Propose the commit at every milestone gate-pass. Opt-out is `.project-manager/config.yaml` → `auto_commit: false`.
+- **Default-on auto-commit.** Run the commit at every milestone gate-pass — inform the student, don't ask. *"Committing M3."* Then report the commit hash. Opt-out is `.project-manager/config.yaml` → `auto_commit: false`, in which case the coach prompts once for confirmation before running.
 
 ## L7 is special — the meta-reveal
 

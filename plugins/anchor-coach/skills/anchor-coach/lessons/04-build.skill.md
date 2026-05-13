@@ -33,9 +33,9 @@ access:
 
 ## Lecture
 
-You've done the writing. The brief named the human and what they want. The picture named what's on the screen, what the app has to remember, and what the user can do. The shell sets the stage with the regions in place and the data nouns waiting as empty variables. M4 is where the whole working app appears in front of you — not because you slowly walk the agent through six rounds of *now-add-this-feature*, but because you give the agent everything it needs in one well-built prompt and let it do the work it's good at.
+Think of yourself as a director on the day of the shoot. You wrote the script in M1 (the brief). You drew the storyboards in M2 (the picture). You set up the stage in M3 (the shell). Today you do *not* coach every actor through every line — you hand the crew the materials, watch the take, and call for one or two re-shoots if something didn't land. That's where the speed of building with an agent shows up most clearly, and it's where most of your time gets saved across the lifetime of building real tools.
 
-Think of yourself as a director on the day of the shoot. You wrote the script. You drew the storyboards. You set up the stage. Today you do *not* coach every actor through every line — you hand the crew the materials, watch the take, and call for one or two re-shoots if something didn't land. That's where most of your time is saved over the lifetime of building real tools. Old-school programming told you to feel each loop six times before it became automatic; that mattered when *you* were typing each loop. You are not typing each loop. The agent is. Your job is to write one prompt that names all six features clearly, get out of the way, and react to what comes back.
+M4 is where the whole working app appears in front of you — not because you slowly walk the agent through six rounds of *now-add-this-feature*, but because you give the agent everything it needs in one well-built prompt and let it do the work it's good at. Old-school programming told you to feel each loop six times before it became automatic; that mattered when *you* were typing each loop. You are not typing each loop. The agent is. Your job is to write one prompt that names all six features clearly, get out of the way, and react to what comes back.
 
 Three things make this work. First, `/expert-coder` is attached — the agent reaches for clean, readable code instead of clever code, which makes the result easier for you to skim and to debug if something does go sideways. Second, the agent asks you two or three **clarifying questions** before it generates anything — *"localStorage for persistence, yes? Local-only, no server, no phone? Should I extend your M3 file or rewrite it from scratch?"* — and your one-sentence answers shape the build. The questions are the design conversation; you don't have to anticipate every detail in the prompt, because the agent will surface the gaps. Third, the agent **writes a small test routine alongside the app** that exercises every feature and reports green or red. The tests are the safety net that makes one-shot generation trustworthy: you don't have to click through every feature to verify; the agent's tests do that and tell you the score. You spend your attention on the parts a test can't see — does the polish look right, is the empty state friendly, does the accent color feel like *you*.
 
@@ -215,7 +215,7 @@ You should have, in your head:
 - Plain-English understanding of what each new function in `index.html` does. Not at the syntax level — at the *what it does for the user* level. That's the engineer's level.
 - The feeling that the next thing is *use Anchor for real for a day or two and notice what's clunky*, not *add more features*. That's Lesson 5.
 
-If you have all of that, ask the coach to advance you to M5.
+M4 is closed; the coach moves you straight to M5.
 
 ---
 

@@ -190,7 +190,7 @@ You should have, in your head:
 - An answered question about what happens on tab-close-and-reopen, which means you've thought about persistence at least once before any code exists.
 - The feeling that the next thing to do is *build the empty shell so the page loads in your browser*, not *write the working features*. (That's Lesson 3, where skills also enter the picture for the first time.)
 
-If you have all of that, ask the coach to advance you to M3.
+M2 is closed; the coach moves you straight to M3.
 
 ---
 

@@ -419,7 +419,7 @@ You should have, in your head:
 - The five data nouns from M2 now living as variables in the script. They are the bones of what comes next.
 - The feeling that the next thing to do is *direct the agent to make the input box actually add a task to the list* — one feature at a time, not all six at once. (That's Lesson 4, sub-lesson 1.)
 
-If you have all of that, ask the coach to advance you to M4. The bar is real. The bar is also low enough that you'll clear it.
+M3 is closed; the coach moves you straight to M4. The bar is real, and you cleared it.
 
 ---
 

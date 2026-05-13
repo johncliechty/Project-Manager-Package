@@ -43,12 +43,17 @@ The whole curriculum is about 2 hours of session time, spread across whatever ca
 
 ## What you'll build
 
-Anchor is a single-file local task tracker:
+Anchor is a single-file local task tracker — the narrow default. The coach can scale it up if you want something bigger.
+
+**The default scope:**
 
 - One `index.html`, vanilla JavaScript, `localStorage` for persistence — no toolchain, no server, no install.
 - Six features: add a task, mark complete, delete, group tasks under projects, persist across page reloads, polish (system font, comfortable whitespace, accent color, anchor SVG).
+- A handful of sample "from-calendar" tasks built in, so you feel what calendar-aware task generation is like.
 - Tests written by the agent that prove every feature works.
 - Public GitHub repo with a README and screenshot at the end.
+
+**Want bigger?** Anchor can grow into a fuller workflow / daily-organizer / life-coach app — live calendar sync, coaching prompts, additional integrations, whatever fits how you actually work. Just tell your coach at any lesson. The more you add, the more refinement time it takes, but you'll see how fast agentic AI can build even bigger things. *The narrow default is the launchpad, not the ceiling.*
 
 The course teaches *the loop you'll use for the next twenty years of building things with an AI agent.* Anchor is the seed; the loop is the plant.
 
@@ -58,13 +63,13 @@ The course teaches *the loop you'll use for the next twenty years of building th
 
 | # | Milestone | What you produce | Time |
 |---|---|---|---|
-| M0 | Setup | Cowork running, GitHub auth, project folder | ~10 min |
+| M0 | Setup | Cowork running, project folder with `.project-manager/`, README placeholder | ~5 min |
 | M1 | Brainstorm | `brief.md` — who it's for, scenarios, NOT-list | ~10 min |
 | M2 | Describe | `picture.md` — mockup, 5 data nouns, 4 interactions | ~15 min |
 | M3 | Scaffold | `index.html` empty shell — agent shows 3 mockups, you pick | ~30–40 min |
 | M4 | Build | Working `index.html` with all 6 features + tests | ~10 min |
 | M5 | Test | Use it for real; find 2–3 things; fix them | ~10 min |
-| M6 | Ship | Public GitHub repo + README + screenshot + text the link | ~10 min |
+| M6 | Ship | Public GitHub repo + README + screenshot + text the link (coach handles gh install + auth here if not done) | ~15 min |
 | M7 | Launch | Retrospective + meta-reveal + your next project bootstrapped | ~25 min |
 
 Total: ~2 hours of session time. The course assumes you spread it across whatever calendar feels right.

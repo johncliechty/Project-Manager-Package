@@ -29,6 +29,8 @@ access:
 
 ## Lecture
 
+Anchor was the seed. The loop is the plant. You planted one seed in M1 (a brief), watched it grow through M2 through M6 (picture, shell, build, test, ship), and now you can see the whole plant — a real public tool that someone other than you has clicked on. Today's lesson is two things at once: *closing* Anchor with a retrospective written about your own work, and *starting* a new seed — your next project. The reveal in this lesson is that you've known how to grow whatever you want for the last seven lessons; you just haven't been told the name of the gardener yet.
+
 Anchor is shipped. Five lessons of writing, building, using, and putting your work somewhere other humans can see it. Before we go anywhere new, there's one small move left on Anchor itself — and it's the move that, more than any other, reveals what kind of work you've actually been doing.
 
 Real engineering projects close with a **retrospective**. Not a quiz. Not a grade. A one-page reflection on what got built, what surprised the builder, what the builder might do differently next time. Teams write retrospectives at the end of sprints; companies write them at the end of launches; you're about to have one written for Anchor. *You don't write this one.* It gets written for you, automatically, as you sit at the chat. The reasons will be clear in a minute.

@@ -48,30 +48,4 @@ git add .
 # Check whether there's actually anything to commit before we try.
 $staged = git diff --cached --name-only
 if (-not $staged) {
-    Write-Host ""
-    Write-Host "Nothing to commit. Working tree may already be in sync with origin." -ForegroundColor Yellow
-    Write-Host ""
-    git log --oneline -3
-    exit 0
-}
-
-Write-Host ""
-Write-Host "=== git commit ===" -ForegroundColor Cyan
-git commit -m "docs: simplify install flow - clone-and-read-SKILL instead of marketplace; add CLAUDE.md auto-load bootstrap"
-
-Write-Host ""
-Write-Host "=== git push origin main ===" -ForegroundColor Cyan
-git push origin main
-
-Write-Host ""
-Write-Host "=== done ===" -ForegroundColor Green
-Write-Host "Public URL: https://github.com/johncliechty/Project-Manager-Package"
-Write-Host ""
-Write-Host "To pilot: open an empty folder in Cowork and paste:"
-Write-Host ""
-Write-Host "  Please clone https://github.com/johncliechty/Project-Manager-Package"
-Write-Host "  into my home directory if it isn't already there, then read the file at"
-Write-Host "  Project-Manager-Package/plugins/anchor-coach/skills/anchor-coach/SKILL.md"
-Write-Host "  and start the Anchor curriculum with me here in this folder. Follow the"
-Write-Host "  SKILL md instructions for the rest of our session and every future one."
-Write-Host ""
+    Write-Hos

@@ -29,13 +29,17 @@ access:
 
 ## Lecture
 
+You've moved into the house. The furniture is arranged, the kitchen works, you've cooked a few meals in it. Today is the moment the first guest walks through the front door. Their first impression — what they see in the entryway, what they take in before they say anything — is what M6 is about. Until today, Anchor was yours. Today it becomes something other people can see, and the README is the entryway.
+
 Until now Anchor has existed on your laptop. That's a real thing — it does what you said it would do, your data lives in it, you use it. But there's a quiet moment that hasn't happened yet, and it's the moment that turns a project into *a thing*. That moment is when someone other than you can see it.
 
 Shipping is the engineering word for *making your work exist for other humans*. Not deployed-to-a-server with users-and-uptime-and-billing — that's a different thing, a bigger thing, several projects out from where you are. Shipping at the v0 scale is much simpler: your code goes to a public place on the internet (GitHub), it has a README that explains what it is, and someone you know can click a link and see it. That's it. Ten minutes from where you are now.
 
 The smallest possible version is the right version. The repo is public. The README has four parts — *what this is* in one paragraph, *how to run it* in two lines (download the folder, double-click `index.html`), one screenshot, and a one-line credits note that says you built it with Cowork as your coach. The screenshot is the load-bearing part of the README; people scroll past words and look at pictures. The credits note is honest about how it got made, which matters for two reasons: it tells the truth about your method, and it gives the next person reading the README permission to learn the same way.
 
-The whole thing is one prompt. The agent runs `gh repo create`, generates the README from `brief.md` (so it inherits the voice you already established), embeds the screenshot you take, makes the first push, and gives you back the URL. The clarifying questions are small — *"public or private? repo name `anchor`, or do you want something else? Any specific copy to keep or omit?"*
+Before any of that there's a small one-time setup beat. If you've never published anything to GitHub before, the coach checks whether `gh` (the GitHub CLI) is installed and authenticated on your machine. If it isn't — first-timers, most of you — the coach handles the install (about 30 seconds via `winget` on Windows or `brew` on Mac) and walks you through `gh auth login`, which opens a GitHub sign-in page in your browser. Three minutes total for a true first-timer; under a minute if `gh` is already there. You watch and click the GitHub sign-in once; the coach does the rest. (If your runtime is sandboxed, the coach delegates the host operation to Claude Code via the `use-claude-code` skill — one paste, then back to building.)
+
+After the one-time setup, the whole ship is one prompt. The agent runs `gh repo create`, generates the README from `brief.md` (so it inherits the voice you already established), embeds the screenshot you take, makes the first push, and gives you back the URL. The clarifying questions are small — *"public or private? repo name `anchor`, or do you want something else? Any specific copy to keep or omit?"*
 
 Then the part that isn't software: you copy the URL and you send it to someone. A friend, a sibling, your spouse, the person you keep talking to about this project — any one human who knows you and would humor you for ninety seconds. They click the link. They see the screenshot. They send back one sentence — *"oh nice"*, *"is that for grad school?"*, *"how does the projects sidebar work?"*. That sentence is the artifact that proves the lesson worked. You write it into `.project-manager/ship-note.md` and the milestone is closed.
 
@@ -46,6 +50,8 @@ This is the moment most beginners say *"oh — I built something that exists in 
 ## Worked Example — The reading-log student ships
 
 Reading log is built, used, revised. Five commits on disk (`M1` through `M5`). The student is ready to ship.
+
+**Step zero — gh setup (one-time, ~3 minutes).** Anna's reading log is built and ready to ship, but she's never published anything to GitHub before — no `gh`, no GitHub account yet. The coach handles it via the Setup Protocol. *"Going to install gh and get you signed in to GitHub now — that's the tool that creates and pushes the repo. About three minutes total, mostly waiting on the install. Watch."* The coach runs `gh --version` (not found), then `winget install GitHub.cli` — about 30 seconds. The coach is running in Cowork's Linux sandbox so it doesn't have host PowerShell directly; it delegates via `use-claude-code` — Anna pastes one prompt into her Claude Code terminal, gh installs, she pastes back "done." The coach then runs `gh auth login --web`: a device-code page opens in her browser, she signs in to GitHub (no account yet — she creates one, takes about a minute), pastes the device code, the auth completes. The coach verifies with `gh auth status`: *"All set. gh installed (2.x.y), authenticated as `anna-kim`. Now for the actual ship."* Three minutes from a true first-timer; under a minute for any student who already has gh ready.
 
 **Step one — take the screenshot.** Open `index.html`, make sure there are 5–10 books in the list with notes (a fresh empty page is a bad screenshot), full-window screenshot, save it as `assets/screenshot.png` in the project folder. The coach walks the student through the OS shortcut if needed (`Win+Shift+S` on Windows, `Cmd+Shift+4` on Mac).
 
@@ -100,6 +106,19 @@ Third, **the sister's response is data.** *"Cute, are you going to track Sally R
 ## Practice — The session, end to end
 
 About 10 minutes.
+
+### Step 0 — gh setup (one-time, skip if you already have gh installed and authenticated)
+
+If `gh` (the GitHub CLI) isn't installed and authenticated on your machine, the coach handles it now — about 3 minutes total, you click once. Plain-English version:
+
+1. Coach runs `gh --version`. If it returns a version ≥ 2.0, jump to Step 1.
+2. If not, coach installs gh — `winget install GitHub.cli` on Windows or `brew install gh` on Mac. About 30 seconds. (In sandboxed runtimes the coach delegates the install to Claude Code on your host via the `use-claude-code` skill — one paste, one report-back.)
+3. Coach runs `gh auth login --web`. A device-code page opens in your browser. You sign in to GitHub (or create a free account if you don't have one — about a minute), paste the device code shown in your terminal, and the auth completes. Token lands in your OS credential manager automatically.
+4. Coach verifies with `gh auth status` and confirms you're ready.
+
+Total: about 3 minutes for a first-timer, near-zero if gh is already there. You watch and click the GitHub sign-in once; the coach does the rest.
+
+**Want to skip GitHub entirely?** If you'd rather not connect a GitHub account, tell the coach *"skip L6, ship locally"* and they'll close L6 with a local-only "shipped" state and move you to L7. The course's main thread (L1–L5 + L7) still works without the public publish step.
 
 ### Step 1 — Take a screenshot
 
@@ -180,7 +199,7 @@ You should have, in your head:
 - A working understanding of `gh repo create` + `git push` as a single step that lives in the agent's hands. You don't need to memorize the gh flags; the agent does. You need to know that *ship* is a one-prompt thing now.
 - The feeling that the next thing is *not adding more features.* The next thing is *what's the next project?* That's Lesson 7. It's the most interesting one in the course.
 
-If you have all of that, ask the coach to advance you to M7.
+M6 is closed; the coach moves you straight to M7.
 
 ---
 
