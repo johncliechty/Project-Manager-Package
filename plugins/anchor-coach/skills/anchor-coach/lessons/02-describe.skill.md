@@ -37,7 +37,7 @@ Picture this. Your friend is going to visit your bedroom for the first time, but
 
 By the time you've finished, your friend can *picture* the room without having been in it. They couldn't build it — they don't know whether the walls are sheetrock or brick — but they could walk through the room in their head and tell you where they'd put their bag down.
 
-That's exactly the job in M2. You wrote the brief in M1; it described *who Anchor is for and what they want to do*. Now you describe *what Anchor looks like* — the picture, in plain English, with enough detail that a friend (or the agent) could draw it on a napkin. People who make movies do this professionally and call it a *storyboard* — every shot drawn out before the camera rolls. You're doing the software version.
+That's exactly the job in M2. You wrote the brief in M1; it described *who Anchor is for and what they want to do*. Now you describe *what Anchor looks like* — the picture, in plain English, with enough detail that a friend (or the agent) could draw it on a napkin.
 
 The picture has three parts. No more.
 
@@ -146,7 +146,7 @@ Two rounds normal. Three fine. Past four, you're polishing.
 
 ### Step 5 — Closing sweep
 
-Coach walks the M2 rubric out loud — nine boxes — at a brisk pace: *"picture.md exists ✓ ... mockup is picturable ✓ ... five data nouns ✓ ... four interactions ✓ ... answers.md exists with refresh answer ✓ ... zero implementation nouns ✓ ... student typed it themselves — student wrote the prompt and directed the draft ✓ ... review-received — that's now ... commit — that's next."*
+Coach walks the M2 rubric out loud — nine boxes — at a brisk pace: *"picture.md exists ✓ ... mockup is picturable ✓ ... data nouns cover what Anchor has to remember ✓ ... interactions cover what the user does for the brief's scope ✓ ... answers.md exists with refresh answer ✓ ... zero implementation nouns ✓ ... student wrote the prompt and directed the draft ✓ ... review-received — that's now ... commit — that's next."*
 
 For any red box, one specific edit, you greenlight. Engagement, not agreement.
 

@@ -33,7 +33,9 @@ access:
 
 ## Lecture
 
-Think of yourself as a director on the day of the shoot. You wrote the script in M1 (the brief). You drew the storyboards in M2 (the picture). You set up the stage in M3 (the shell). Today you do *not* coach every actor through every line — you hand the crew the materials, watch the take, and call for one or two re-shoots if something didn't land. That's where the speed of building with an agent shows up most clearly, and it's where most of your time gets saved across the lifetime of building real tools.
+Picture this. It's the day of the shoot. The script is locked. The stage is built, the lighting is hung, the actors are in costume. The director walks onto the set, scans the room once, and says, *"Places. Roll camera. Action."* For the next six minutes the crew works simultaneously — lighting cues fire, cameras track, the lead delivers the line — and at the end, the director calls cut, watches the playback, and asks for one re-shoot of the second beat because the actor's timing was a half-second early. That's M4. Not six rounds of slowly walking the agent through *now-add-this-feature* and *now-add-the-next-one.* One well-prepared shoot. One playback. Maybe one re-take.
+
+You wrote the brief in M1. You described the picture in M2. You set up the empty shell in M3. Today you hand the agent everything it needs in one well-built prompt, watch it generate the entire working app in fifteen seconds, watch a test routine the agent wrote run and report green on every feature, and use the result yourself for a minute to confirm the feel is right. The whole thing in about ten minutes.
 
 M4 is where the whole working app appears in front of you — not because you slowly walk the agent through six rounds of *now-add-this-feature*, but because you give the agent everything it needs in one well-built prompt and let it do the work it's good at. Old-school programming told you to feel each loop six times before it became automatic; that mattered when *you* were typing each loop. You are not typing each loop. The agent is. Your job is to write one prompt that names all six features clearly, get out of the way, and react to what comes back.
 
@@ -131,7 +133,7 @@ One coach-driven flow. About ten minutes.
 
 ### Step 1 — Write the prompt
 
-Coach: *"Here's the template I'd use for M4. Edit anything that doesn't sound like you, or rewrite from scratch."*
+Coach: *"Here's the template I'd use for M4. Read it — what's off?"*
 
 The coach offers a template like the one in the worked example — references `brief.md`, `picture.md`, and `index.html` as context, attaches `/expert-coder`, names all the features the picture described, asks for a system font stack + comfortable whitespace + one accent color + the anchor SVG in the header, asks for an in-browser test routine triggered by `?test=1`, and ends with *"ask me clarifying questions before you generate."*
 

@@ -29,7 +29,9 @@ access:
 
 ## Lecture
 
-You've moved into the house. The furniture is arranged, the kitchen works, you've cooked a few meals in it. Today is the moment the first guest walks through the front door. Their first impression — what they see in the entryway, what they take in before they say anything — is what M6 is about. Until today, Anchor was yours. Today it becomes something other people can see, and the README is the entryway.
+Picture this. The house is done. You moved in last week. The bed is made, the kitchen works, you've cooked a few meals, and you've started to notice which floorboard squeaks. Tonight is the night a friend is coming over for the first time. They ring the bell. You open the front door. They step into the entryway. *Before they say a word*, they take in the whole space — the light, the smell, the photo on the wall opposite the door, whether the place looks like *you*. You can't control what they take in; you can only control what's there to be taken in.
+
+Until today, Anchor was yours. Today it becomes something other people can see, and the README is the entryway.
 
 Until now Anchor has existed on your laptop. That's a real thing — it does what you said it would do, your data lives in it, you use it. But there's a quiet moment that hasn't happened yet, and it's the moment that turns a project into *a thing*. That moment is when someone other than you can see it.
 

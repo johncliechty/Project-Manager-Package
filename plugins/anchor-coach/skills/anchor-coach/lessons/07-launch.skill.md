@@ -29,7 +29,9 @@ access:
 
 ## Lecture
 
-Anchor was the seed. The loop is the plant. You planted one seed in M1 (a brief), watched it grow through M2 through M6 (picture, shell, build, test, ship), and now you can see the whole plant — a real public tool that someone other than you has clicked on. Today's lesson is two things at once: *closing* Anchor with a retrospective written about your own work, and *starting* a new seed — your next project. The reveal in this lesson is that you've known how to grow whatever you want for the last seven lessons; you just haven't been told the name of the gardener yet.
+Picture this. You're at the kitchen window in October, looking at a tomato plant in a pot on the sill. Six months ago you put a seed in soil — small, brown, identical to the seven other seeds in the packet. You watered. You waited. The first leaf came up at week two. Through summer the plant grew, branched, flowered, fruited. There are tomatoes on it now. You can pick one, eat it. And the work that produced it — the seed, the soil, the water, the light, the waiting — is now a thing you know how to do. Next spring you'll put another seed in another pot. Basil. Or peppers. Or a different tomato. Same loop. Different plant.
+
+Anchor was the seed. The loop is the plant. You put your brief in soil in M1 and watched it grow through M2 through M6 — picture, shell, build, test, ship — and now you can see the whole plant: a real public tool that someone other than you has clicked on. Today's lesson is two things at once: *closing* Anchor with a retrospective written about your own work, and *starting* a new seed — your next project. The reveal in this lesson is that you've known how to grow whatever you want for the last seven lessons; you just haven't been told the name of the gardener yet.
 
 Anchor is shipped. Five lessons of writing, building, using, and putting your work somewhere other humans can see it. Before we go anywhere new, there's one small move left on Anchor itself — and it's the move that, more than any other, reveals what kind of work you've actually been doing.
 
@@ -151,7 +153,7 @@ If you have an idea but no materials, the path is the same shape with one change
 
 The prompt looks like:
 
-> *"Using `/project-manager`, please bootstrap a new project at `~/projects/<name>`. I have an idea I want to build but nothing on paper. Ask me the questions you need to draft a `brief.md` — who it's for, three scenarios with becauses, a NOT list, no implementation nouns. Then write the brief from my answers."*
+> *"Using `/project-manager`, please bootstrap a new project at `~/projects/<name>`. I have an idea I want to build but nothing on paper. Ask me the questions you need to draft a `brief.md` — who it's for, scenarios with becauses covering the load-bearing flows, a NOT list of considered scope decisions, no implementation nouns. Then write the brief from my answers."*
 
 The agent asks five or six questions in a short back-and-forth — *"who is this for?"*, *"name one specific scenario where you'd use it"*, *"what's a feature you'd love to have but are willing to cut from v0?"* — and writes `brief.md` from your answers. Same shape as M1 of Anchor, except the agent is now running the M1 conversation directly because `/project-manager` knows the M1 protocol.
 

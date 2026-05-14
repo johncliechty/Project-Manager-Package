@@ -35,7 +35,11 @@ access:
 
 ## Lecture
 
-Software designers have always done this: before committing to a design, sketch three concepts, watch the client react, refine the chosen one. What's new in 2026 is the speed. The agent can produce three full, working mockups of Anchor — different layouts, different visual choices, different ways a "done" task looks — in about thirty seconds. Three minutes of work used to take three days. Take a beat to register that, because it changes how you should approach the rest of this milestone.
+Picture this. You and your kid have the napkin sketch from M1 and the room-by-room description from M2. You head back to the lumber yard, buy the right materials this time, and spend a Saturday afternoon *framing* the treehouse. By sunset, the skeleton stands. You can walk around in it. The roof is up, the floor is solid, the door-shaped hole is where the door will go, the window-shaped holes are where the windows will go. There is no shingling. There is no paint. The door doesn't exist yet — just the hole. Stick your kid inside, ask them to climb up the ladder, and they could — and they'd recognize the shape of what's coming. That's the right amount of done for today.
+
+Software is the same. The frame, in software, is called the **scaffold** — or, less formally, *the empty shell.* It's an `index.html` file that opens in your browser and shows Anchor's *shape*: a header, a sidebar where the projects will live, a list area where tasks will go, an input box at the bottom. Nothing works yet. Click the input, type, press Enter — nothing happens. Click a task — nothing happens. That's correct. The skeleton is what we're after, not the working tool.
+
+What's new in 2026 — and it's worth pausing on — is that you don't sketch the scaffold by hand, line by line. Software designers have always done this: before committing to a design, sketch three concepts, watch the client react, refine the chosen one. What's new in 2026 is the speed. The agent can produce three full, working mockups of Anchor — different layouts, different visual choices, different ways a "done" task looks — in about thirty seconds. Three minutes of work used to take three days. Take a beat to register that, because it changes how you should approach the rest of this milestone.
 
 The most useful thing you can do in M3 is *not* to describe the perfect Anchor in advance. It's to ask the agent for three mockups, open them in your browser, and react.
 
