@@ -28,8 +28,8 @@ If you're new to this, pick **Cowork**. The lessons reference Cowork-style inter
 
 Pick a path you'll remember and leave the folder empty.
 
-- **Windows:** right-click your Desktop —> New Folder —> name it `anchor`. Or pick a path like `C:\projects\anchor`.
-- **macOS:** right-click your Desktop —> New Folder —> name it `anchor`. Or pick a path like `~/projects/anchor`.
+- **Windows:** right-click your Desktop → New Folder → name it `anchor`. Or pick a path like `C:\projects\anchor`.
+- **macOS:** right-click your Desktop → New Folder → name it `anchor`. Or pick a path like `~/projects/anchor`.
 
 ### 3. Open the folder in your agent and paste the bootstrap prompt
 
