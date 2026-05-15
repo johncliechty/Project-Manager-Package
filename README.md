@@ -49,11 +49,10 @@ Anchor is a single-file local task tracker — the narrow default. The coach can
 
 - One `index.html`, vanilla JavaScript, `localStorage` for persistence — no toolchain, no server, no install.
 - Six features: add a task, mark complete, delete, group tasks under projects, persist across page reloads, polish (system font, comfortable whitespace, accent color, anchor SVG).
-- A handful of sample "from-calendar" tasks built in, so you feel what calendar-aware task generation is like.
 - Tests written by the agent that prove every feature works.
 - Public GitHub repo with a README and screenshot at the end.
 
-**Want bigger?** Anchor can grow into a fuller workflow / daily-organizer / life-coach app — live calendar sync, coaching prompts, additional integrations, whatever fits how you actually work. Just tell your coach at any lesson. The more you add, the more refinement time it takes, but you'll see how fast agentic AI can build even bigger things. *The narrow default is the launchpad, not the ceiling.*
+**Want it to do more?** Anchor can grow from where v0 lands — extra features, better polish, whatever fits the way you actually use it. Just tell your coach at any lesson; bigger asks take more refinement time, but you'll see how fast agentic AI builds even substantial additions on top of a clean foundation. *The narrow default is the launchpad, not the ceiling.*
 
 The course teaches *the loop you'll use for the next twenty years of building things with an AI agent.* Anchor is the seed; the loop is the plant.
 
