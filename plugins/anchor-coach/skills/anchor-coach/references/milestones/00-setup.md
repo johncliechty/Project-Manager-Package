@@ -35,9 +35,10 @@ Read each box. For each, check the project state. Mark it ✓ or ✗. **All five
 *Windows (paste into PowerShell):*
 
 ```powershell
-git clone https://github.com/johncliechty/claude-code-bridge C:\dev\claude-code-bridge
-powershell -ExecutionPolicy Bypass -File C:\dev\claude-code-bridge\install-watcher.ps1
+powershell -ExecutionPolicy Bypass -Command "iex (iwr -useb 'https://raw.githubusercontent.com/johncliechty/claude-code-bridge/main/bootstrap.ps1').Content"
 ```
+
+That single line handles everything: it detects Python (and auto-installs Python 3.13 via `winget` if the student doesn't have it), detects `git` (auto-installs if missing), clones the bridge repo to `C:\dev\claude-code-bridge`, sets up the venv, and registers the IPC daemon. The student does not need `git` pre-installed and does not need Python pre-installed.
 
 *macOS (paste into Terminal):*
 
