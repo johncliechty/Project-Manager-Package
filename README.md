@@ -11,19 +11,29 @@ Works with **Cowork**, **Claude Code**, and any agent that has bash and file-rea
 
 ## Getting started — for students
 
-Three steps. About 3 minutes from zero to your first lesson.
+About 5 minutes from zero to your first lesson, including a one-time setup step the agent will walk you through.
 
-### 1. Install Cowork
+### 1. Pick your AI agent
 
-Go to [claude.com/cowork](https://claude.com/cowork), download for your OS, and sign in with your Anthropic account. *(An Anthropic subscription is required.)*
+Any of these works — the curriculum is agent-agnostic and reads `SKILL.md` files directly, no marketplace install needed:
 
-### 2. Make an empty folder for your project
+- **Cowork** (recommended for first-timers) — desktop app from Anthropic, designed for non-coders. **Requires the Claude Pro plan** (a paid Anthropic subscription, typically a nominal monthly cost). Download from [claude.com/cowork](https://claude.com/cowork) and sign in.
+- **Claude Code** — terminal-based, more technical. Install via `npm install -g @anthropic-ai/claude-code`. Also uses your Anthropic Pro plan.
+- **Codex** — OpenAI's coding agent. Requires an OpenAI subscription.
+- **Cursor, Gemini CLI, or any other agent** that loads `SKILL.md` files. Any of these can run the curriculum; the experience was tuned against Cowork but the pattern is portable.
 
-Right-click your Desktop → New Folder → name it `anchor` (or whatever you want). Don't put anything in it.
+If you're new to this, pick **Cowork**. The lessons reference Cowork-style interactions; everything else still works, just with minor wording mismatches.
 
-### 3. Open the folder in Cowork and paste the bootstrap prompt
+### 2. Make an empty folder for your Anchor project
 
-Open Cowork. Click **Open Folder** and pick the folder you just made. In the chat, paste this exact prompt and press Enter:
+Pick a path you'll remember and leave the folder empty.
+
+- **Windows:** right-click your Desktop —> New Folder —> name it `anchor`. Or pick a path like `C:\projects\anchor`.
+- **macOS:** right-click your Desktop —> New Folder —> name it `anchor`. Or pick a path like `~/projects/anchor`.
+
+### 3. Open the folder in your agent and paste the bootstrap prompt
+
+Open your agent (Cowork: **Open Folder**; Claude Code: `cd` into the folder and run `claude`). In the chat, paste this exact prompt and press Enter:
 
 ```
 Please clone https://github.com/johncliechty/Project-Manager-Package
@@ -33,9 +43,14 @@ and start the Anchor curriculum with me here in this folder. Follow the
 SKILL.md's instructions for the rest of our session and every future one.
 ```
 
-Your Anchor coach takes it from there. It will clone the curriculum repo to your home folder, drop a small `CLAUDE.md` in your project folder so that every future Cowork session in this folder auto-loads the skill (no re-pasting needed), and start your first lesson — which is about 10 minutes.
+Your Anchor coach takes it from there. It will:
 
-The whole curriculum is about 2 hours of session time, spread across whatever calendar feels right. You'll finish with a working web app shipped to your own public GitHub, a retrospective about your work, and a second project already bootstrapped.
+1. Clone the curriculum to your home folder.
+2. **Walk you through a ~60-second setup step.** If your agent runs in a sandbox (Cowork is the common case), the coach will ask you to paste one short command into your OS terminal (PowerShell on Windows, Terminal on macOS) to install a small bridge tool. This is the *only* paste you'll do outside the agent chat for the whole curriculum. If your agent already has direct host shell access (some Claude Code / terminal-agent setups), this step is skipped automatically.
+3. Drop a small `CLAUDE.md` in your project folder so every future session in this folder auto-loads the curriculum (no re-pasting needed).
+4. Start your first lesson — about 10 minutes.
+
+The whole curriculum is about **2 hours of session time**, spread across whatever calendar feels right. You'll finish with a working web app shipped to your own public GitHub, a retrospective about your work, and a second project already bootstrapped.
 
 **Updates.** If the curriculum gets improved later, just type *"update the Anchor skill"* and the coach will `git pull` the repo. No re-install ceremony.
 

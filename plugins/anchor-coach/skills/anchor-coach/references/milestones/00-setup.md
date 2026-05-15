@@ -23,6 +23,42 @@ Read each box. For each, check the project state. Mark it ✓ or ✗. **All five
 
 **Deferred to L6:** `gh` install and `gh auth login`. Earlier versions of the curriculum required these at M0; in practice that consumed ~30 minutes from real students and was the single biggest cause of curriculum dropout. GitHub setup now happens at L6 (Ship), where it's actually needed, executed silently by the coach via the Setup Protocol — see `references/STYLE.md` for the Setup Protocol and `plugins/use-claude-code/skills/use-claude-code/SKILL.md` for host-delegation when the coach is running in a sandboxed runtime.
 
+**Required when sandboxed — install the claude-code-bridge.** If you (the coach) are running in a sandboxed runtime that lacks direct host shell access — Cowork's Linux sandbox is the canonical case; any agent without `bash`/`pwsh` directly on the host counts — the bridge MUST be installed before M0 is green. Without it, every host-touching step later (the L6 ship step in particular) bounces back to the student as a paste request, which breaks the curriculum's *"I handle the plumbing"* promise.
+
+**Detection.** Two questions, in order:
+
+1. *Can I run a test host command directly?* — try something like `Write-Output hello` via your runtime's native host shell. If it works, you're not sandboxed; skip this box and move on.
+2. *Is the bridge already installed?* — check whether `C:\dev\claude-code-bridge\ipc\inbox\` (Windows) or `~/dev/claude-code-bridge/ipc/inbox/` (macOS/Linux) exists. If yes, skip; the bridge is operational.
+
+**Install flow when sandboxed AND bridge missing.** Tell the student in one sentence what's about to happen, then have them paste a one-liner into their OS terminal (PowerShell on Windows, Terminal on macOS). After the paste runs, you (the coach) verify the bridge is alive by writing a tiny test request and reading the response.
+
+*Windows (paste into PowerShell):*
+
+```powershell
+git clone https://github.com/johncliechty/claude-code-bridge C:\dev\claude-code-bridge
+powershell -ExecutionPolicy Bypass -File C:\dev\claude-code-bridge\install-watcher.ps1
+```
+
+*macOS (paste into Terminal):*
+
+```bash
+git clone https://github.com/johncliechty/claude-code-bridge ~/dev/claude-code-bridge
+bash ~/dev/claude-code-bridge/install-watcher-macos.sh
+```
+
+*Linux (paste into your shell):*
+
+```bash
+git clone https://github.com/johncliechty/claude-code-bridge ~/dev/claude-code-bridge
+bash ~/dev/claude-code-bridge/install-watcher-linux.sh
+```
+
+About 60 seconds end-to-end. If `git` isn't on the student's PATH, the clone will fail with a clear error — the coach then walks the student through `winget install Git.Git` (Windows) or `xcode-select --install` (macOS) as a one-time prerequisite paste, then retries the clone.
+
+**Verify.** Once the install reports done, ping the bridge with a `Write-Output bridge-alive` test request via the filesystem-IPC path documented in `plugins/use-claude-code/skills/use-claude-code/SKILL.md`. If the response comes back within ~1 second, the bridge is operational and the box is green. If it times out, retry the install once; if it still fails, surface the error and fall back to the use-claude-code paste-once flow as a degraded mode.
+
+**Why this changed from "Optional" to required.** Earlier curriculum drafts described the bridge as optional, recommending it only for the smoothest experience. In practice that meant Cowork students hit several paste-handoffs across the curriculum (each L6 host operation, each install check) — the inverse of *"I handle the plumbing."* One paste at M0 in exchange for zero pastes for the rest of the course is the better deal.
+
 ## How you tell the student where they are
 
 M0 should clear in ~5 minutes for most students now that the gh install is deferred. If a box is red, name it and fix it on the spot — execute, don't narrate (per the Real-Intent Protocol in `STYLE.md`).
