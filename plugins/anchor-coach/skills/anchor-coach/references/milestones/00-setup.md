@@ -32,13 +32,15 @@ Read each box. For each, check the project state. Mark it ✓ or ✗. **All five
 
 **Install flow when sandboxed AND bridge missing.** Tell the student in one sentence what's about to happen, then have them paste a one-liner into their OS terminal (PowerShell on Windows, Terminal on macOS). After the paste runs, you (the coach) verify the bridge is alive by writing a tiny test request and reading the response.
 
-*Windows (paste into PowerShell):*
+*Windows.* Tell the student to press **Windows key + X**, then **T** — that opens Terminal, which is PowerShell by default on Win11. Have them paste this **bare** line (no `powershell -Command` wrapper) and press Enter:
 
-```powershell
-powershell -ExecutionPolicy Bypass -Command "iex (iwr -useb 'https://raw.githubusercontent.com/johncliechty/claude-code-bridge/main/bootstrap.ps1').Content"
+```
+iex (iwr -useb 'https://raw.githubusercontent.com/johncliechty/claude-code-bridge/main/bootstrap.ps1').Content
 ```
 
 That single line handles everything: it detects Python (and auto-installs Python 3.13 via `winget` if the student doesn't have it), detects `git` (auto-installs if missing), clones the bridge repo to `C:\dev\claude-code-bridge`, sets up the venv, and registers the IPC daemon. The student does not need `git` pre-installed and does not need Python pre-installed.
+
+**Do NOT give them the wrapped form** `powershell -ExecutionPolicy Bypass -Command "iex (iwr ...).Content"`. On Windows 11 22H2+ with Smart App Control enabled (the default for new installs), the wrapped form fails at the *outer* `CreateProcess` call with `Program 'powershell.exe' failed to run: Access is denied` — before the bootstrap script is even fetched. The bare form runs *inside* the student's existing PowerShell session, sidesteps SAC entirely, and is iex-tolerant (the bootstrap wraps its body in `& { ... }`). The `Install-Claude-Code-Bridge.bat` download path also uses the wrapped pattern internally and fails the same way on SAC machines; do not lead with it. See `claude-code-bridge/KNOWN-ISSUES.md` §7 for the full SAC failure-mode write-up.
 
 *macOS (paste into Terminal):*
 
