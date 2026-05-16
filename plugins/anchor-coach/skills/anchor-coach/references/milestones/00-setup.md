@@ -42,21 +42,19 @@ That single line handles everything: it detects Python (and auto-installs Python
 
 **Do NOT give them the wrapped form** `powershell -ExecutionPolicy Bypass -Command "iex (iwr ...).Content"`. On Windows 11 22H2+ with Smart App Control enabled (the default for new installs), the wrapped form fails at the *outer* `CreateProcess` call with `Program 'powershell.exe' failed to run: Access is denied` — before the bootstrap script is even fetched. The bare form runs *inside* the student's existing PowerShell session, sidesteps SAC entirely, and is iex-tolerant (the bootstrap wraps its body in `& { ... }`). The `Install-Claude-Code-Bridge.bat` download path also uses the wrapped pattern internally and fails the same way on SAC machines; do not lead with it. See `claude-code-bridge/KNOWN-ISSUES.md` §7 for the full SAC failure-mode write-up.
 
-*macOS (paste into Terminal):*
+*macOS (paste into Terminal — open with Cmd+Space then type "Terminal"):*
 
 ```bash
-git clone https://github.com/johncliechty/claude-code-bridge ~/dev/claude-code-bridge
-bash ~/dev/claude-code-bridge/install-watcher-macos.sh
+curl -fsSL https://raw.githubusercontent.com/johncliechty/claude-code-bridge/main/install-watcher-macos.sh | bash
 ```
 
 *Linux (paste into your shell):*
 
 ```bash
-git clone https://github.com/johncliechty/claude-code-bridge ~/dev/claude-code-bridge
-bash ~/dev/claude-code-bridge/install-watcher-linux.sh
+curl -fsSL https://raw.githubusercontent.com/johncliechty/claude-code-bridge/main/install-watcher-linux.sh | bash
 ```
 
-About 60 seconds end-to-end. If `git` isn't on the student's PATH, the clone will fail with a clear error — the coach then walks the student through `winget install Git.Git` (Windows) or `xcode-select --install` (macOS) as a one-time prerequisite paste, then retries the clone.
+The Mac/Linux installers now self-clone — they ensure `git` is on PATH (with one-line install instructions if not), clone the bridge repo to `~/claude-code-bridge` if missing, then proceed with the LaunchAgent / systemd-user install and IPC self-test. About 60 seconds end-to-end on a machine that already has Python 3 and git; longer on a fresh machine that needs Homebrew/apt to install them. If `git` or `python3` isn't installed, the script bails with the exact `brew install` / `apt install` line the student needs.
 
 **Verify.** Once the install reports done, ping the bridge with a `Write-Output bridge-alive` test request via the filesystem-IPC path documented in `plugins/use-claude-code/skills/use-claude-code/SKILL.md`. If the response comes back within ~1 second, the bridge is operational and the box is green. If it times out, retry the install once; if it still fails, surface the error and fall back to the use-claude-code paste-once flow as a degraded mode.
 
