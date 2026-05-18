@@ -67,6 +67,10 @@ Every host operation in the session — installing tools at M0 or L6, running gi
 
 This is the difference between a coach that delivers a smooth two-hour experience and one that punctuates every lesson with installation interruptions. Pay the five-minute setup cost once.
 
+### Bridge note (filesystem-IPC ≠ Claude Code CLI)
+
+The Anchor curriculum also uses the **filesystem-IPC bridge** (`claude-code-bridge`) as a *separate* host-side path that runs alongside Claude Code. The two are independent tools: Claude Code is an agentic CLI; the bridge is a passive daemon that polls an inbox folder and writes responses to an outbox folder. The curriculum prefers the bridge for routine host operations (it's silent, no paste needed once installed) and uses Claude Code delegation as a fallback or for tasks that genuinely need an LLM on the host. **For the bridge specifically, install is a co-prerequisite with *mount*: the daemon is registered on the host by the install script, but the inbox/outbox folders are only reachable from a Cowork sandbox after `mcp__cowork__request_cowork_directory` has been called on the bridge folder.** Skipping the mount means the bridge appears installed but is silently non-load-bearing — every host operation falls back to paste-once, defeating the whole reason for the install. The M0 setup rubric in `Project-Manager-Package/plugins/anchor-coach/.../00-setup.md` enforces both as conditions of the sandboxed-runtime 6th box.
+
 ## What the student needs (the Claude Code prereq)
 
 **Claude Code is a separate install** from the Claude desktop app and from Cowork. The Claude desktop app (which includes Cowork mode) is at [`claude.com/download`](https://claude.com/download). **Claude Code** is a separate CLI tool installed independently — typically `npm install -g @anthropic-ai/claude-code` (requires Node.js) or via the installer at [`claude.com/code`](https://claude.com/code). They share Anthropic account authentication but install separately.

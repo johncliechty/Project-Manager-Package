@@ -17,6 +17,10 @@ access:
 
 # Lesson 1 — Brainstorm — Saying What You're Building Before You Build It
 
+> **Where we are.** You just closed M0 — your environment is ready and there's a one-line README in this folder with your name and a sentence about what Anchor is for you. Now we're in Lesson 1.
+>
+> Quick refresher of what you're building, since it's been a few minutes since the orientation: **Anchor is your one-page personal task tracker — a place where your tasks and projects survive a closed lid, organized the way *you* think about your work.** Think of v0 as a treehouse: small, useful, complete in itself, built before any blueprint of a house. v1 will add a room or two; v2 may grow into a fuller workflow / daily-organizer. But v0 is the treehouse — and the load-bearing lesson of L1 is *describing the treehouse before you cut any lumber.* That's what this hour is about.
+>
 > **Goal of this lesson.** By the end you have a one-page brief that describes Anchor in plain English — including three things it deliberately won't do — and the prompt you used to draft it, saved in your project. No code. No file extensions. No jargon. Just the picture in your head, written down so someone else could see it.
 >
 > **One thing about how this course works.** In Lessons 1 and 2 *you write* — the brief and the picture are prose, and only you know what's in your head. From Lesson 3 onward *the agent writes the code* and you direct. Both halves are real engineering work: writing teaches you to specify; directing teaches you to evaluate. This is what real software work looks like in 2026.
