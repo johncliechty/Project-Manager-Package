@@ -13,16 +13,16 @@ personal task tracker. About 2 hours total, in bite-sized lessons.
 
 **Three steps to start (about 5 minutes):**
 
-**1. Install Cowork.** Go to https://claude.com/download, install the Claude desktop
-app, and sign in. Cowork needs the **Claude Pro plan** (a paid subscription).
+**1. Pick your AI agent.** Any of these works (requires a paid subscription):
+- **Cowork** (Recommended for beginners) — Desktop app from Anthropic. Download from [claude.ai/download](https://claude.ai/download).
+- **Claude Code** — Terminal-based. Install via `npm install -g @anthropic-ai/claude-code`.
+- **Gemini CLI** — Terminal-based. Install via `npm install -g @google/gemini-cli`.
 
-**2. Make an empty folder** for your project — e.g. right-click your Desktop →
-New Folder → name it `anchor`. Leave it empty.
+**2. Make an empty folder** for your project — e.g. right-click your Desktop → New Folder → name it `anchor`. Leave it empty.
 
-**3. Open that folder in Cowork** (use **Open Folder**), then paste this exact
-message into the chat and press Enter:
+**3. Open that folder in your agent** (Cowork: **Open Folder**; Claude/Gemini: `cd` into the folder and run `claude` or `gemini`), then paste this exact message into the chat:
 
-```
+```text
 I'd like to start the Anchor curriculum in this folder.
 
 First, get the curriculum onto the machine without breaking anything:
@@ -41,6 +41,17 @@ First, get the curriculum onto the machine without breaking anything:
 
 Then start the Anchor curriculum with me here in this folder.
 ```
+
+---
+
+## ⚡ Pro Tip: "YOLO" Mode
+
+If you find the constant permission prompts annoying, you can enable **"YOLO Mode"** to let the AI work faster:
+
+*   **Claude Code:** Start with `claude --yolo`
+*   **Gemini CLI:** Start with `gemini --yolo`
+
+*Warning: YOLO mode means the AI will make changes without asking first.*
 
 You don't need to understand that message — it just keeps the agent from tripping
 over a known quirk. From there, just talk to the agent and follow along.

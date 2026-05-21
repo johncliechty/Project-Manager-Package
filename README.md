@@ -15,27 +15,21 @@ About 5 minutes from zero to your first lesson. The only setup is one dead-easy 
 
 ### 1. Pick your AI agent
 
-Any of these works — the curriculum is agent-agnostic and reads `SKILL.md` files directly, no marketplace install needed:
+Both desktop and terminal-based agents work. **Requires a paid subscription (Claude Pro or Gemini Advanced/API).**
 
-- **Cowork** (recommended for first-timers) — desktop app from Anthropic, designed for non-coders. **Requires the Claude Pro plan** (a paid Anthropic subscription, typically a nominal monthly cost). Download from [claude.com/cowork](https://claude.com/cowork) and sign in.
-- **Claude Code** — terminal-based, more technical. Install via `npm install -g @anthropic-ai/claude-code`. Also uses your Anthropic Pro plan.
-- **Codex** — OpenAI's coding agent. Requires an OpenAI subscription.
-- **Cursor, Gemini CLI, or any other agent** that loads `SKILL.md` files. Any of these can run the curriculum; the experience was tuned against Cowork but the pattern is portable.
-
-If you're new to this, pick **Cowork**. The lessons reference Cowork-style interactions; everything else still works, just with minor wording mismatches.
+- **Cowork** (Recommended for beginners) — Desktop app from Anthropic. Download from [claude.ai/download](https://claude.ai/download).
+- **Claude Code** — Terminal-based. Install via `npm install -g @anthropic-ai/claude-code`.
+- **Gemini CLI** — Terminal-based. Install via `npm install -g @google/gemini-cli`.
 
 ### 2. Make an empty folder for your Anchor project
 
-Pick a path you'll remember and leave the folder empty.
-
-- **Windows:** right-click your Desktop → New Folder → name it `anchor`. Or pick a path like `C:\projects\anchor`.
-- **macOS:** right-click your Desktop → New Folder → name it `anchor`. Or pick a path like `~/projects/anchor`.
+Create a new, empty folder on your Desktop named `anchor`.
 
 ### 3. Open the folder in your agent and paste the bootstrap prompt
 
-Open your agent (Cowork: **Open Folder**; Claude Code: `cd` into the folder and run `claude`). In the chat, paste this exact prompt and press Enter:
+Open your agent (Cowork: **Open Folder**; Claude Code/Gemini: `cd` into the folder and run `claude` or `gemini`). In the chat, paste this exact prompt:
 
-```
+```text
 I'd like to start the Anchor curriculum in this folder.
 
 First, get the curriculum onto the machine without breaking anything:
@@ -54,6 +48,19 @@ First, get the curriculum onto the machine without breaking anything:
 
 Then start the Anchor curriculum with me here in this folder.
 ```
+
+---
+
+## ⚡ Pro Tip: "YOLO" Mode
+
+If you find the constant permission prompts annoying, you can enable **"YOLO Mode"** to let the AI work faster:
+
+*   **Claude Code:** Start with `claude --yolo`
+*   **Gemini CLI:** Start with `gemini --yolo`
+
+*Warning: YOLO mode means the AI will make changes without asking first.*
+
+Your Anchor coach takes it from there. It will:
 
 You don't need to understand that prompt — it just keeps the agent from tripping over a known sandbox quirk. Your Anchor coach takes it from there. It will:
 
@@ -151,4 +158,6 @@ cd Project-Manager-Package
 npm link                  # makes `pm` available globally (optional)
 
 # In a folder where you want to start a project:
-mkd
+mkdir my-project && cd my-project
+pm init                   # interactive bootstrap
+```
