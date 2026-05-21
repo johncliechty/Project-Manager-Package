@@ -14,6 +14,35 @@ version control and GitHub at the start of every project** — it's a habit wort
 building — and pay the host-setup cost **once**, in the dead-easiest way a sandbox
 allows, so the rest of the project is silent.
 
+## Reliability contract (read this first)
+
+**The student's success never depends on the bridge or GitHub.** Everything the
+curriculum actually teaches and builds -- M0 through M5 and L7 -- runs entirely
+inside Cowork with no host access: files are written with your file tools, and
+version history is kept by `bin/anchor-git.sh` (git database in `/tmp`, work-tree
+the project folder, history persisted as a bundle in `.project-manager/`). That
+path is host-free and is the thing that must always work.
+
+The bridge + GitHub are a **best-effort enhancement**, attempted at the start
+because backing a project up on day one is a good habit -- but they are *never on
+the critical path*:
+
+- **Fast-fail.** When you call the bridge during setup, pass a short timeout
+  (~15s on the `run_command` tool). If it doesn't answer quickly, errors, or the
+  student declines, treat it as unavailable **immediately** -- do not wait on it,
+  do not retry more than once. A flaky headless daemon must never make the student
+  watch a spinner.
+- **Instant, invisible fallback.** On any bridge/GitHub hiccup, set
+  `host.bridgeReady=false` in `state.json`, switch to local-only version control
+  via `anchor-git.sh`, and continue the lesson without comment. The student must
+  never see a stall or a setup error -- that is system housekeeping (STYLE.md).
+- **Offer again later, cheaply.** GitHub can be turned on at any later milestone
+  (or at L6) in one step if the bridge becomes available. Local-only is a complete,
+  valid way to finish the entire course.
+
+The rule: **two minutes to Lesson 1, every time, on every machine -- guaranteed.**
+GitHub is a bonus that never costs the student the curriculum.
+
 ## The principle: one setup, then silent
 
 A sandboxed agent (Cowork) cannot install a host daemon by itself, so the *first*
