@@ -64,7 +64,7 @@ For all of the above: tell the user what you're doing in one sentence; don't ask
 
 At session start in any new project folder, run the protocol in this exact order:
 
-1. **Detect.** Check the environment for the tools the upcoming work will need. Run the version-check commands yourself. Read the project folder state if any. Look at what's installed; look at what's needed.
+1. **Detect.** Check the environment for the tools the upcoming work will need. Run the version-check commands yourself. Read the project folder state if any. Look at what's installed; look at what's needed. **Run the host-setup preflight in `references/host-setup.md` now** — on the first turn in a project it sets up the claude-code-bridge and GitHub *once, at the start*, so every commit and push for the rest of the project is silent (setting up version control + GitHub at project start is a habit worth building). It's dead-easy (one double-click of `Install-Bridge.bat`, no cut-and-paste) and falls back to local-only if the student declines, so it never blocks. On later turns it's a quick no-op via the `host.*` flags in `state.json`.
 
 2. **Inform — don't ask.** Tell the user what you see and what you're about to do. *"You've got git. I'm going to add `gh` now — that's the tool we'll need at the ship step. About 30 seconds."* The user is informed; they're not asked.
 

@@ -15,7 +15,7 @@ Anchor exists at a public URL on GitHub, the README explains what it is in 30 se
 
 Read each box. Mark each ✓ or ✗. **All six must be ✓ to advance to M7.**
 
-- [ ] **A public GitHub repo exists at `github.com/<student>/<repo-name>`.** Verify by visiting the URL — it loads, the page shows the file tree, the repo is marked Public. If the student chose Private by accident, walk them through `gh repo edit --visibility public`.
+- [ ] **The GitHub repo (created back at M0) is now public at `github.com/<student>/<repo-name>`.** It was created and pushed-to from M0 onward, so it already holds the M1–M5 history; L6 flips it public with `gh repo edit --visibility public`. Verify by visiting the URL — it loads, shows the file tree, and is marked Public. *(Local-only students who skipped M0 host setup: the repo is created now, here, before going public.)*
 - [ ] **`README.md` in the repo has the four parts:**
   - A one-paragraph *"what this is"* in the student's voice (derived from `brief.md`, not marketing copy).
   - A two-line *"how to run"* — usually just *"download the folder, double-click `index.html`."*
@@ -40,7 +40,7 @@ If all six are green, mark M6 complete in `.project-manager/state.json`, propose
 
 ## Why this rubric
 
-M6 is the smallest possible version of *making your work exist for other humans.* The mechanics — `gh repo create`, README, push — are well-trodden and the agent handles them on one prompt. The pedagogically load-bearing parts of the rubric are **the screenshot has real data** and **someone you know has seen it and replied.** Both are about whether the project actually crossed the threshold from *thing on your laptop* to *thing in the world.*
+M6 is the smallest possible version of *making your work exist for other humans.* The mechanics — making the repo public, README, push — are well-trodden and the agent handles them on one prompt (the repo itself was created back at M0). The pedagogically load-bearing parts of the rubric are **the screenshot has real data** and **someone you know has seen it and replied.** Both are about whether the project actually crossed the threshold from *thing on your laptop* to *thing in the world.*
 
 The screenshot rule (box 3) is firmer than it sounds. A README with an empty-page screenshot reads to outside humans as *"I haven't actually used this."* Even five real-looking tasks make the screenshot read as *"this person is using this."* That difference is the difference between *"oh"* and *"oh, cool"* from the friend who clicks the link. The screenshot does more work in the README than the prose does; the rubric weights it accordingly.
 

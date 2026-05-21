@@ -11,6 +11,6 @@
   "license": "MIT",
   "keywords": ["learning", "curriculum", "first-project", "beginner", "anchor"],
   "dependencies": {
-    "skills": ["project-manager"]
+    "skills": ["project-manager", "use-claude-code"]
   }
 }

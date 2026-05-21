@@ -11,7 +11,7 @@ Works with **Cowork**, **Claude Code**, and any agent that has bash and file-rea
 
 ## Getting started — for students
 
-About 5 minutes from zero to your first lesson, including a one-time setup step the agent will walk you through.
+About 5 minutes from zero to your first lesson. The only setup is one dead-easy step, the very first time on your computer: you double-click a file the agent drops into your folder, which installs a small helper so the agent can run git and GitHub *for* you. After that first time, every future project is zero-touch. (Prefer not to install it? The agent falls back to a local-only mode and you can add GitHub later.)
 
 ### 1. Pick your AI agent
 
@@ -36,19 +36,33 @@ Pick a path you'll remember and leave the folder empty.
 Open your agent (Cowork: **Open Folder**; Claude Code: `cd` into the folder and run `claude`). In the chat, paste this exact prompt and press Enter:
 
 ```
-Please clone https://github.com/johncliechty/Project-Manager-Package
-into my home directory if it isn't already there, then read the file at
-Project-Manager-Package/plugins/anchor-coach/skills/anchor-coach/SKILL.md
-and start the Anchor curriculum with me here in this folder. Follow the
-SKILL.md's instructions for the rest of our session and every future one.
+I'd like to start the Anchor curriculum in this folder.
+
+First, get the curriculum onto the machine without breaking anything:
+- If you're a sandboxed agent (e.g. Cowork — your working path looks like
+  /sessions/.../mnt/...), THIS folder is a mounted host folder where git can't
+  run. Clone the curriculum with
+  `git clone --depth 1 https://github.com/johncliechty/Project-Manager-Package`
+  into a temporary location like /tmp/anchor-coach-src — NOT into this folder.
+  If instead you have direct access to my computer's shell (e.g. Claude Code),
+  clone it to my home directory; git works normally for you.
+- Then read
+  Project-Manager-Package/plugins/anchor-coach/skills/anchor-coach/SKILL.md
+  and follow it for this session and every future one. If you're sandboxed, the
+  SKILL will tell you to read references/sandbox-and-git.md first — do that
+  before any git or file operation.
+
+Then start the Anchor curriculum with me here in this folder.
 ```
 
-Your Anchor coach takes it from there. It will:
+You don't need to understand that prompt — it just keeps the agent from tripping over a known sandbox quirk. Your Anchor coach takes it from there. It will:
 
-1. Clone the curriculum to your home folder.
-2. **Walk you through a ~60-second setup step.** If your agent runs in a sandbox (Cowork is the common case), the coach will ask you to paste one short command into your OS terminal (PowerShell on Windows, Terminal on macOS) to install a small bridge tool. This is the *only* paste you'll do outside the agent chat for the whole curriculum. If your agent already has direct host shell access (some Claude Code / terminal-agent setups), this step is skipped automatically.
-3. Drop a small `CLAUDE.md` in your project folder so every future session in this folder auto-loads the curriculum (no re-pasting needed).
+1. Fetch the curriculum into a temporary working area (not your project folder).
+2. Drop a small `CLAUDE.md` in your project folder so every future session here auto-resumes the curriculum — no re-pasting needed.
+3. Set up your project folder, give it a home on GitHub, and start tracking versions of your work — so it's backed up from day one. The one-time helper install is a single double-click; the agent hands you the file.
 4. Start your first lesson — about 10 minutes.
+
+The only thing you ever do outside the chat is that **one double-click the first time**, to install the helper — no copy-pasting commands, and nothing to repeat on future projects.
 
 The whole curriculum is about **2 hours of session time**, spread across whatever calendar feels right. You'll finish with a working web app shipped to your own public GitHub, a retrospective about your work, and a second project already bootstrapped.
 
@@ -137,22 +151,4 @@ cd Project-Manager-Package
 npm link                  # makes `pm` available globally (optional)
 
 # In a folder where you want to start a project:
-mkdir my-project && cd my-project
-pm init                   # interactive bootstrap
-```
-
-The kit enforces a **bounded operating loop**: research → proto-plan → critique (max 2 passes) → decompose → build → log → review. The bounded-iteration rule is the discipline; the rest of the kit is plumbing.
-
-Full CLI documentation is in [`SKILL.md`](./SKILL.md) and [`INTEGRATION.md`](./INTEGRATION.md).
-
----
-
-## License
-
-MIT for the code, CC BY 4.0 for the curriculum content. See [`LICENSE`](./LICENSE).
-
----
-
-## Authorship
-
-Built by John Liechty. The curriculum was developed with Cowork (Claude) as a writing partner; the operating-loop discipline derives from John's *AI-Assisted Project Workflow*. Contributions welcome via pull request.
+mkd

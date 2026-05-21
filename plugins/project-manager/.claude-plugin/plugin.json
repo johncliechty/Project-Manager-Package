@@ -9,5 +9,8 @@
   "homepage": "https://github.com/johncliechty/Project-Manager-Package",
   "repository": "https://github.com/johncliechty/Project-Manager-Package",
   "license": "MIT",
-  "keywords": ["project-management", "workflow", "scaffolding", "retrospective"]
+  "keywords": ["project-management", "workflow", "scaffolding", "retrospective"],
+  "dependencies": {
+    "skills": ["use-claude-code"]
+  }
 }

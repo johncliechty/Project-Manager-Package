@@ -37,7 +37,7 @@ If you have the tool, you do it.
 
 **Never** narrate commands for the student to paste. The pattern *"paste this into PowerShell and tell me what it says"* is the wrong shape every time.
 
-**Sandboxed-runtime exception.** If you genuinely lack host-shell access (a Cowork session without the claude-code-bridge installed, or any agent without bash), delegate one host operation via the documented bridge path — the filesystem-IPC bridge at `C:\dev\claude-code-bridge\` or the `mcp__Claude_Code_Bridge__run_command` MCP tool when present. One paste, not ten typed commands. The narration pattern stays banned.
+**Sandboxed-runtime exception.** If you are sandboxed (a Cowork session is the canonical case), do all file work and version control *in-sandbox*: file tools for the project files, `bin/anchor-git.sh` for commits (never raw `git` on the mounted folder). For the rare operation that genuinely needs the host — the GitHub publish at L6 — delegate one operation via the `use-claude-code` skill (one paste, not ten typed commands), or via the optional claude-code-bridge if the student has set it up. The narration pattern stays banned. See `references/sandbox-and-git.md`.
 
 ### Three worked examples — wrong vs right (the act-vs-ask axis)
 
@@ -60,7 +60,7 @@ If you have the tool, you do it.
 
 At session start in any new project folder, run the protocol in this exact order:
 
-1. **Detect.** Check the environment for the tools the upcoming work will need. Run the version-check commands yourself (`git --version`, `gh --version` if relevant, `node --version` if relevant). Read the project folder state if any. Look at what's installed; look at what's needed. **Also check whether you (the coach) have direct host shell access.** If you are running in a sandboxed runtime (Cowork's Linux sandbox is the canonical case), the bridge install is part of M0 — see the *Required when sandboxed* section in `references/milestones/00-setup.md` for the exact per-OS install commands and the verify-by-ping procedure. Without the bridge installed, every host-touching step later in the curriculum will bounce back to the student as a paste; that breaks the *"I handle the plumbing"* promise the orientation makes. **After the bridge install completes, the coach MUST also call `mcp__cowork__request_cowork_directory` for the bridge folder before any host-touching step is attempted — the install alone does not make the bridge reachable from the sandbox.** The install registers the host daemon; the mount is what makes the inbox/outbox folders writable from inside the Cowork session. Both steps must happen at M0; M0 does not close until both are green (see the sixth rubric box in `references/milestones/00-setup.md`).
+1. **Detect.** Check the environment for the tools the upcoming work will need. Run the version-check commands yourself (`git --version`, `node --version` if relevant). Read the project folder state if any. **Also check whether you (the coach) have direct host shell access** — run `pwd`; a `/sessions/<id>/mnt/...` path means you are sandboxed (Cowork). If you are sandboxed, read `references/sandbox-and-git.md` and follow it: the project folder is a mounted host folder where **git and delete do not work**, so you clone the curriculum to `/tmp`, scaffold the project with your file tools, and run all commits through `bin/anchor-git.sh`. **M0 sets up the host channel + GitHub at the start** via the host-setup preflight (`plugins/project-manager/skills/project-manager/references/host-setup.md`): the bridge (one double-click of `Install-Bridge.bat`, no paste) and GitHub (`gh auth login --web`, repo created at start), with a local-only `bin/anchor-git.sh` fallback so it never blocks. The earlier dropout problem was the paste/install grind, not the timing -- the fix is to make setup one double-click, not to defer it.
 
 2. **Inform — don't ask.** Tell the student what you see and what you're about to do. *"You've got git and a working browser. I'm going to install gh now — that's the tool we'll need at the ship step. About 30 seconds."* The student is informed; they're not asked.
 
@@ -68,7 +68,7 @@ At session start in any new project folder, run the protocol in this exact order
 
 4. **Verify.** Re-run the detection commands and confirm each tool now responds with a version. Open the file you just wrote and confirm its contents. The verification is part of the work, not an optional add-on.
 
-5. **Report ready.** *"All set — git installed (2.x.y), gh deferred to L6, browser opens HTML files locally, project folder has `.project-manager/` with `state.json`. M0 is closed. Starting M1."* Single sentence. Move on.
+5. **Report ready.** *"All set — git installed (2.x.y), GitHub repo created and version control running, browser opens HTML files locally, project folder has `.project-manager/` with `state.json`. M0 is closed. Starting M1."* Single sentence. Move on.
 
 ### The Forward-Looking Setup Protocol
 
